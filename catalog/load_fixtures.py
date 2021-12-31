@@ -10,3 +10,6 @@ def create_categories(data,parent = None):
 
 	if item.get('children'):
 		create_categories(item.get('children'), parent)
+
+if __name__ == '__main__':
+	create_categories(data)
