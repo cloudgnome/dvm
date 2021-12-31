@@ -12,6 +12,7 @@ from base64 import b64decode
 from django.core.files.base import ContentFile
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from catalog.utils import is_ajax
 
 __all__ = ['ChangePasswordView','forget_pass','signup','SigninView','signout','EditView']
 
@@ -124,7 +125,7 @@ def signout(request):
 
     request.session.flush()
 
-    if request.is_ajax():
+    if is_ajax(request):
         return JsonResponse({'result':1})
     else:
         return redirect('/')

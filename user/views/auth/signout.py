@@ -2,6 +2,7 @@ from django.shortcuts import redirect
 from user.models import AnonymousUser
 from django.contrib.auth.signals import user_logged_out
 from django.http import JsonResponse
+from catalog.utils import is_ajax
 
 def signout(request):
     user = getattr(request, 'user', None)
@@ -14,7 +15,7 @@ def signout(request):
 
     request.session.flush()
 
-    if request.is_ajax():
+    if is_ajax(request):
         return JsonResponse({'result':1})
     else:
         return redirect('/')

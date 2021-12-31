@@ -1,5 +1,6 @@
 from user.models import AnonymousUser
 from system.settings import JS_BUILD,CSS_BUILD
+from catalog.utils import is_ajax
 
 def auth(request):
     """
@@ -18,7 +19,8 @@ def auth(request):
         'request':request,
         # 'perms': PermWrapper(user),
     }
-    if not request.is_ajax():
+
+    if not is_ajax(request):
         context['JS_BUILD'] = JS_BUILD
         context['CSS_BUILD'] = CSS_BUILD
 

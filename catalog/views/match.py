@@ -1,9 +1,10 @@
 from user.models import User
 from django.http import Http404,JsonResponse
 from json import loads
+from catalog.utils import is_ajax
 
 def match(request,model):
-    if request.is_ajax():
+    if is_ajax(request):
         Model = eval(model.title())
         try:
             Model.objects.get(**loads(request.body))
