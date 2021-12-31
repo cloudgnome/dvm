@@ -6,14 +6,14 @@ data = loads(f.read())
 
 def create_categories(data,parent = None):
 	for item in data:
-		parent = Category.objects.create(name=item.get('name'),type=item.get('type'),class_icon=item.get('class'))
+		category = Category.objects.create(name=item.get('name'),type=item.get('type'),class_icon=item.get('class'))
 
 		if parent:
-			parent.parent = parent
-			parent.save()
+			category.parent = parent
+			category.save()
 
 	if item.get('children'):
-		create_categories(item.get('children'), parent)
+		create_categories(item.get('children'), category)
 
 if __name__ == '__main__':
 	create_categories(data)
