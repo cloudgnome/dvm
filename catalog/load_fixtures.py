@@ -12,8 +12,8 @@ def create_categories(data,parent = None):
 			category.parent = parent
 			category.save()
 
-	if item.get('children'):
-		create_categories(item.get('children'), category)
+		if item.get('children'):
+			create_categories(item.get('children'), category)
 
 if __name__ == '__main__':
 	create_categories(data)
