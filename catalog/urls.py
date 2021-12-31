@@ -10,8 +10,8 @@ urlpatterns = [
     re_path(r'^match/(?P<model>[a-z]+)$',match),
     re_path(r'^offer/(?P<id>[0-9]+)$',offer),
     re_path(r'^auction/(?P<id>[0-9]+)$',auction),
-    re_path(r'^add/image/(?P<model>[A-Za-z]+)/(?P<id>[0-9]+)',login_required(add_image)),
-    re_path(r'^remove/image/(?P<model>[A-Za-z]+)/(?P<id>[0-9]+)',login_required(remove_image)),
+    # re_path(r'^add/image/(?P<model>[A-Za-z]+)/(?P<id>[0-9]+)',login_required(add_image)),
+    # re_path(r'^remove/image/(?P<model>[A-Za-z]+)/(?P<id>[0-9]+)',login_required(remove_image)),
     re_path(r'^edit/(?P<model>[A-Za-z]+)/(?P<id>[0-9]+)',login_required(EditView.as_view())),
     re_path(r'^', offers),
 ]
