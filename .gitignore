@@ -4,8 +4,6 @@ static/sitemap.xml
 *.pyc
 cache/*
 media/*
-system/wsgi.py
-system/settings.py
 staticBack/*
 /uwsgi.core
 /sftp-config.json
@@ -13,7 +11,6 @@ shop/templates/robots.txt
 /uwsgi
 *.sql
 robots.txt
-wsgi.py
 manage.py
 dump.rdb
 __pycache__/*
