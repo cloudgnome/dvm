@@ -1,6 +1,6 @@
 from django import forms
 from catalog.models import Offer,Category
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from catalog.widgets import *
 
 class AddOfferForm(forms.ModelForm):

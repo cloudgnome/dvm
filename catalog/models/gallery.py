@@ -3,7 +3,7 @@ from PIL import Image
 from system.settings import MEDIA_ROOT
 import os
 from random import randint
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 class AbstractGallery(models.Model):
     image = models.ImageField(max_length=255,upload_to='data/company/%Y/%m/%d', blank=True,verbose_name=_('Image'))

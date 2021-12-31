@@ -1,5 +1,5 @@
 from channels.generic.websocket import AsyncJsonWebsocketConsumer
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from chat.models import Chat,History
 from chat.middleware.auth import login
 from user.models import Session

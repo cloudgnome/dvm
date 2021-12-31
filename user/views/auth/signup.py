@@ -3,7 +3,7 @@ from user.forms import SignUpForm,UserSocialForm
 from user.models import User
 from django.shortcuts import render,redirect
 from django.http import JsonResponse
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from json import loads
 from requests import get
 from system.settings import MEDIA_ROOT

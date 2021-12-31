@@ -15,7 +15,7 @@ import os,sys
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-BASE_URL = 'dev.dvm-market.com:8080'
+BASE_URL = 'dvm.cloudgnome.digital'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -25,7 +25,7 @@ SECRET_KEY = 'se1jh!7421*^^o78g9gg8#4p3#q-_c0$gs2ezk4n%%ajmvmpi!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dev.dvm-market.com']
+ALLOWED_HOSTS = ['dvm.cloudgnome.digital']
 
 APPEND_SLASH = False
 # Application definition
@@ -57,9 +57,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-                '/home/dd/dvm-market.com/html',
-                '/home/dd/dvm-market.com/html/user',
-                '/home/dd/dvm-market.com/html/catalog',
+                '/Users/apple/dvm/html',
+                '/Users/apple/dvm/html/user',
+                '/Users/apple/dvm/html/catalog',
             ],
         # 'APP_DIRS': True,
         'OPTIONS': {
@@ -82,9 +82,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'HOST': 'localhost',
-        'NAME': 'ololo_db',
-        'USER': 'ololo_user',
-        'PASSWORD': 'ololo',
+        'NAME': 'dvm_db',
+        'USER': 'dvm_user',
+        'PASSWORD': 'yh8y{=6YFSES((_e',
         'OPTIONS': {
             'sql_mode': 'STRICT_TRANS_TABLES',
         }
@@ -134,12 +134,12 @@ JS_BUILD = 1
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/dev/dvm-market.com/static/'
+STATIC_ROOT = '/Users/apple/dvm/static/'
 AUTH_USER_MODEL = 'user.User'
 
-HOME_URL = '/home/dd/dvm-market.com/'
-CACHE_URL = '/hdd/'
-MEDIA_ROOT = '/hdd/dvm-market.com/media/'
+HOME_URL = '/Users/apple/dvm/'
+CACHE_URL = '/user/apple/dvm/cache/'
+MEDIA_ROOT = '/Users/apple/dvm/media/'
 MEDIA_URL = '/media/'
 SESSION_SAVE_EVERY_REQUEST = True
 FILE_UPLOAD_DIRECTORY_PERMISSIONS = 0o777
