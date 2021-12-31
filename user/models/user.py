@@ -136,7 +136,10 @@ class User(models.Model):
         text_content,html_content = render_to_string('user/auth/verify.txt',context),render_to_string('user/auth/verify.html',context)
         msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
         msg.attach_alternative(html_content, "text/html")
-        msg.send()
+        try:
+            msg.send()
+        except:
+            pass
 
 class MailCode(models.Model):
     code = models.CharField(max_length=50,verbose_name='Код')
