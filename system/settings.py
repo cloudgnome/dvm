@@ -143,3 +143,4 @@ MEDIA_ROOT = '/Users/apple/dvm/media/'
 MEDIA_URL = '/media/'
 SESSION_SAVE_EVERY_REQUEST = True
 FILE_UPLOAD_DIRECTORY_PERMISSIONS = 0o777
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
