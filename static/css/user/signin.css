@@ -1,0 +1,245 @@
+#form{
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+}
+input.invalid{
+    border-color: red;
+}
+button#submit.disabled{
+    background-color: #ccc;
+    color: #fff;
+}
+.dvm-text-login > h1 {
+    font-weight: 500;   
+}
+.dvm-text-login > p {
+    margin-bottom: 20px;    
+}
+.dvm-logo {
+    width: 100px;
+    margin: 80px auto 0 auto;
+}
+.dvm-logo img {
+    width: 100%;
+}
+.dvm-login-add .dvm-link {
+    width: 48%;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 300;
+    color: #fff;
+    text-decoration: underline;
+    text-transform: capitalize;
+}
+.dvm-login-add {
+    width: 80%;
+    margin: 0 auto;
+}
+.dvm-login-add .dvm-recover-password {
+    text-align: left;   
+    font-weight: 500; 
+}
+.dvm-login-add .dvm-sign-up {
+    text-align: right;
+    font-weight: 500;
+}
+.dvm-login-form input, .dvm-login-form button, .dvm-button-sign-in, .dvm-recover-form input, .dvm-recover-form button, .dvm-sign-up-form input, .dvm-sign-up-form button{
+    width: 80%;
+    border-radius: 50px;
+    height: 50px;
+    display: block;
+    line-height: 20px;
+    font-size: 14px;
+}
+.dvm-login-form .inputs input, .dvm-recover-form .inputs input, .dvm-sign-up-form .inputs input {
+    background: rgba(250, 250, 250, 0.95);
+    color: #125560;
+    margin: 10px auto;
+    font-size: 12px;
+    text-align: left;
+    padding-left: 55px;
+    padding-right: 15px;
+    border: 1px solid #ebeaea;
+    box-shadow: 0 5px 5px rgba(101, 99, 99, 0.2);
+}
+.dvm-focus-input {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+.dvm-login, .dvm-password, .dvm-email {
+	position: relative;
+}
+.fa, .fab, .fal, .far, .fas {
+    font-family: "Font Awesome 5 Pro";
+}
+.dvm-icon-login:after {
+	content: "\f007";
+    font-family: "Font Awesome 5 Pro";
+    color: #125560;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 900;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    height: calc(100% - 0px);
+    bottom: 0;
+    left: 0px;
+    padding-left: 70px;
+    padding-top: 18px;
+}
+.dvm-offer-add .dvm-icon-login:after {
+    padding-left: 55px;
+    padding-top: 12px;
+}
+.dvm-icon-password:after {
+	content: "\f023";
+    font-family: "Font Awesome 5 Pro";
+    color: #125560;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 900;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    height: calc(100% - 0px);
+    bottom: 0;
+    left: 0px;
+    padding-left: 70px;
+    padding-top: 18px;
+}
+.dvm-icon-email:after {
+	content: "\f0e0";
+    font-family: "Font Awesome 5 Pro";
+    color: #125560;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 900;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    height: calc(100% - 0px);
+    bottom: 0;
+    left: 0px;
+    padding-left: 70px;
+    padding-top: 18px;
+}
+.dvm-icon-phone:after {
+	content: "\f10b";
+    font-family: "Font Awesome 5 Pro";
+    color: #125560;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 900;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    height: calc(100% - 0px);
+    bottom: 0;
+    left: 0px;
+    padding-left: 70px;
+    padding-top: 18px;
+}
+input::-webkit-input-placeholder, input::-moz-placeholder, input::-ms-input-placeholder, input::placeholder {
+    font-family: 'Montserrat', sans-serif!important;
+    font-size: 12px!important;
+    font-weight: 400!important;
+    color: #666666!important;
+}
+.dvm-button-sign-in {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 300;
+    background-color: #116a7a;
+    border: 0px;
+    color: #fff;
+    text-transform: uppercase;
+    display: block;
+    margin: 10px auto 10px auto;
+    box-shadow: 0 5px 5px rgba(101, 99, 99, 0.2);
+}
+.inputs input.invalid {
+    border: 1px solid #ff0000;
+}
+.dvm-other-sign {
+    margin-top: 30px;
+}
+.dvm-button-facebook {
+    background: rgba(74, 110, 169, 0.9);   
+}
+.dvm-button-facebook:hover, .dvm-button-facebook:active ,.dvm-button-facebook:focus {
+     background: #4a6ea9cc;   
+}
+.dvm-button-google{
+    background: rgba(205, 87, 80, 0.9);  
+}
+.dvm-button-google:hover, .dvm-button-google:active, .dvm-button-google:focus{
+    background: #cd5750cc;    
+}
+.dvm-button-sign-in span {
+    font-weight: 700;
+}
+
+.dvm-button-sign-in .fab {
+    line-height: 22px;
+    padding-left: 10px; 
+    display: block; 
+}
+.fa-facebook-f:before, .fa-facebook:before {
+    float: left;
+    padding-left: 10px;
+}
+.fa-google:before {
+    float: left;
+    padding-left: 10px;
+}
+.line-1 {
+    height: 2px;
+    background: #fff;
+    display: block;
+    width: 35%;
+    float: left;
+}
+.line-2 {
+    height: 2px;
+    background: #fff;
+    display: block;
+    width: 35%;
+    float: right;
+}
+.dvm-line {
+    text-align: center;
+    line-height: 2px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 30px auto;
+    width: 60%;   
+}
+.errors {
+    font-weight: 700;
+}

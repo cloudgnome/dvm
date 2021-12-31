@@ -1,0 +1,35 @@
+{%extends 'user/profile/main.html'%}
+{%load i18n%}
+{%block main%}
+<div id="breadcrumbs" class="dvm-breadcumbs">
+    <div>
+        <a href="/user/profile">{% trans 'Profile Settings'%}</a>
+        <i class="fal fa-angle-double-right"></i>
+        <a href="/user/payment">{% trans 'Payment History'%}</a>
+    </div>
+</div>
+<div class="dvm-payment-mode">
+    <div class="dvm-payment-filter">
+        <span class="dvm-sort-by">{% trans 'Sort by:'%}</span>
+        <div class="buttons dvm-filter-button-group">
+            <div class="dvm-filter-button dvm-filter-incoming">{% trans 'Incoming'%}</div>
+            <div class="dvm-filter-button dvm-filter-outgoing">{% trans 'Outgoing'%}</div>
+            <div class="dvm-filter-button dvm-filter-all">{% trans 'All'%}</div>
+        </div>
+    </div>
+    <div id="data">
+        {%for payment in payments%}
+        <div class="{{payment.type}}">
+            <div>
+                ID: {{payment.id}}
+            </div>
+            <div>
+                {{payment.summ}} USDT
+            </div>
+            <div class="arrow"></div>
+            <a href="/user/payment/{{payment.id}}" class="info"></a>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+{%endblock%}

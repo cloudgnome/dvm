@@ -1,0 +1,1828 @@
+{%extends 'auctions.html'%}
+{%load i18n%}
+{%block content%}
+<link rel="stylesheet" href="/static/css/user/business.css">
+<link rel="stylesheet" href="/static/css/add/auction-add.css">
+<div id="breadcrumbs" class="dvm-add-auction-breadcumbs">
+    <div>
+        <a href="/auctions">Auctions</a>
+        <i class="fal fa-angle-double-right"></i>
+        <a href="/add/auction">Add Auction</a>
+	</div>
+</div>
+<div class="dvm-auction-add">
+	<div class="dvm-auction-title">
+		<div class="title">Add Auction</div>
+	</div>
+    <div id="gallery">
+        <div id="images">
+            <div class="dvm-column-image">
+                <div class="plus noselect dvm-no-img img-1"></div>
+                <div class="plus noselect dvm-no-img img-2"></div>
+                <div class="plus noselect dvm-no-img img-3"></div>
+                <div class="plus noselect dvm-no-img img-4"></div>
+            </div>
+            <div class="dvm-column-image">
+                <div class="plus noselect dvm-no-img img-5"></div>
+                <div class="plus noselect dvm-no-img img-6"></div>
+                <div class="plus noselect dvm-no-img img-7"></div>
+                <div class="plus noselect dvm-no-img img-8"></div>
+            </div>
+        </div>
+    </div>
+    <form id="form" action="javascript:void(0)" method="post">
+        {%csrf_token%}
+		<div class="inputs">
+				<a id="toggleCategories"> <div class="dvm-add-offer-category">Chose a category</div> </a>
+				<input type="hidden" name="category" id="id_category">
+				<input type="text" name="name" placeholder="Name" required="" id="id_name">
+				<div class="errors">
+				</div>
+				<select name="condition" id="id_condition">
+						<option value="1" selected="">
+								New
+						</option>
+						<option value="2">
+								Used
+						</option>
+				</select>
+				<div class="errors">
+				</div>
+				<input type="number" name="start_price" placeholder="Start Price" required=""
+				id="id_start_price">
+				<div class="errors">
+				</div>
+				<input type="number" name="buyout" placeholder="Buyout Price" required=""
+				id="id_buyout">
+				<div class="errors">
+				</div>
+				<input type="number" name="bid_step" placeholder="Bid Step" required=""
+				id="id_bid_step">
+				<div class="errors">
+				</div>
+				<nav id="categories" class="menu">
+						<ul>
+								<div class="menu-header">
+										<div id="prev">
+												<i class="fal fa-chevron-left">
+												</i>
+										</div>
+										<span class="dvm-menu-title">
+												Chose a Category
+										</span>
+								</div>
+								<li class="parent branch">
+										<span>
+												<i class="fal fa-child">
+												</i>
+												childrens World
+										</span>
+										<ul>
+												<li class="branch">
+														<span>
+																Baby Clothes
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="482"> <i class="fal "></i> Clothes for boys </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="483"> <i class="fal "></i> Clothes for girls </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="484"> <i class="fal "></i> Baby Clothing </a>
+																</li>
+														</ul>
+												</li>
+												<li>
+														<a class="choice" categoryid="485"> <i class="fal "></i> Baby Shoes </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="486"> <i class="fal "></i> Baby Strollers </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="487"> <i class="fal "></i> Baby Car Seats </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="488"> <i class="fal "></i> childrens Furniture </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="489"> <i class="fal "></i> The Toys </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="490"> <i class="fal "></i> children Transport </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="491"> <i class="fal "></i> Goods for feeding </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="492"> <i class="fal "></i> Goods for schoolchildren </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="493"> <i class="fal "></i> Other baby products </a>
+												</li>
+										</ul>
+								</li>
+								<li class="parent branch">
+										<span>
+												<i class="fal fa-building">
+												</i>
+												Real Estate
+										</span>
+										<ul>
+												<li class="branch">
+														<span>
+																Apartments and Rooms
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="496"> <i class="fal "></i> Long-term rental apartments </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="497"> <i class="fal "></i> Sale of apartments, rooms </a>
+																</li>
+														</ul>
+												</li>
+												<li class="branch">
+														<span>
+																Houses
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="499"> <i class="fal "></i> Long-term rental homes </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="500"> <i class="fal "></i> Sale of houses </a>
+																</li>
+														</ul>
+												</li>
+												<li class="branch">
+														<span>
+																Land
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="502"> <i class="fal "></i> Land for rent </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="503"> <i class="fal "></i> Land sale </a>
+																</li>
+														</ul>
+												</li>
+												<li class="branch">
+														<span>
+																Commercial real estate
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="505"> <i class="fal "></i> Sale of commercial real estate </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="506"> <i class="fal "></i> Commercial real estate for rent </a>
+																</li>
+														</ul>
+												</li>
+												<li class="branch">
+														<span>
+																Garages and Parking
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="508"> <i class="fal "></i> Garages and parking lots for rent </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="509"> <i class="fal "></i> Sale of garages, parking lots </a>
+																</li>
+														</ul>
+												</li>
+												<li class="branch">
+														<span>
+																Daily rental housing
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="511"> <i class="fal "></i> Daily houses, hourly </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="512"> <i class="fal "></i> Apartments for rent, hourly </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="513"> <i class="fal "></i> Rooms for rent, hourly </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="514"> <i class="fal "></i> Hotels, recreation centers </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="515"> <i class="fal "></i> Hostels, beds </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="516"> <i class="fal "></i> Offers of Tour Operators </a>
+																</li>
+														</ul>
+												</li>
+												<li class="branch">
+														<span>
+																Offers from Developers
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="518"> <i class="fal "></i> Apartments from developers (new buildings) </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="519"> <i class="fal "></i> Houses from developers (cottage towns) </a>
+																</li>
+														</ul>
+												</li>
+												<li>
+														<a class="choice" categoryid="520"> <i class="fal "></i> Real Estate Abroad </a>
+												</li>
+										</ul>
+								</li>
+								<li class="parent branch">
+										<span>
+												<i class="fal fa-cars">
+												</i>
+												Transport
+										</span>
+										<ul>
+												<li class="branch">
+														<span>
+																Cars
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="523"> <i class="fal "></i> Acura </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="524"> <i class="fal "></i> Alfa Romeo </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="525"> <i class="fal "></i> Audi </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="526"> <i class="fal "></i> BMW </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="527"> <i class="fal "></i> Chery </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="528"> <i class="fal "></i> Chevrolet </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="529"> <i class="fal "></i> Chrysler </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="530"> <i class="fal "></i> Citroen </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="531"> <i class="fal "></i> Dacia </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="532"> <i class="fal "></i> Daewoo </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="533"> <i class="fal "></i> Dodge </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="534"> <i class="fal "></i> Fiat </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="535"> <i class="fal "></i> Ford </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="536"> <i class="fal "></i> Geely </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="537"> <i class="fal "></i> Great Wall </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="538"> <i class="fal "></i> Honda </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="539"> <i class="fal "></i> Hyundai </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="540"> <i class="fal "></i> Infiniti </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="541"> <i class="fal "></i> Jaguar </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="542"> <i class="fal "></i> Jeep </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="543"> <i class="fal "></i> Kia </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="544"> <i class="fal "></i> Land Rover </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="545"> <i class="fal "></i> Lexus </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="546"> <i class="fal "></i> Mazda </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="547"> <i class="fal "></i> Mercedes-Benz </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="548"> <i class="fal "></i> MINI </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="549"> <i class="fal "></i> Mitsubishi </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="550"> <i class="fal "></i> Nissan </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="551"> <i class="fal "></i> Opel </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="552"> <i class="fal "></i> Peugeot </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="553"> <i class="fal "></i> Porsche </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="554"> <i class="fal "></i> Renault </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="555"> <i class="fal "></i> Seat </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="556"> <i class="fal "></i> Skoda </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="557"> <i class="fal "></i> Smart </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="558"> <i class="fal "></i> SsangYong </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="559"> <i class="fal "></i> Subaru </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="560"> <i class="fal "></i> Suzuki </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="561"> <i class="fal "></i> Tesla </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="562"> <i class="fal "></i> Toyota </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="563"> <i class="fal "></i> Volkswagen </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="564"> <i class="fal "></i> Volvo </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="565"> <i class="fal "></i> Other </a>
+																</li>
+														</ul>
+												</li>
+												<li>
+														<a class="choice" categoryid="566"> <i class="fal "></i> Buses </a>
+												</li>
+												<li class="branch">
+														<span>
+																Motorcycles
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="568"> <i class="fal "></i> Mopeds / scooters </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="569"> <i class="fal "></i> ATVs </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="570"> <i class="fal "></i> Motorcycles </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="571"> <i class="fal "></i> Moto - other </a>
+																</li>
+														</ul>
+												</li>
+												<li>
+														<a class="choice" categoryid="572"> <i class="fal "></i> Other transport </a>
+												</li>
+										</ul>
+								</li>
+								<li class="parent branch">
+										<span>
+												<i class="fal fa-truck-plow">
+												</i>
+												Special Machinery
+										</span>
+										<ul>
+												<li class="branch">
+														<span>
+																Trucks
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="575"> <i class="fal "></i> Avia </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="576"> <i class="fal "></i> BAW </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="577"> <i class="fal "></i> CAMC </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="578"> <i class="fal "></i> Daewoo </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="579"> <i class="fal "></i> DAF </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="580"> <i class="fal "></i> DongFeng </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="581"> <i class="fal "></i> FAW </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="582"> <i class="fal "></i> Ford </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="583"> <i class="fal "></i> Foton </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="584"> <i class="fal "></i> Freightliner </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="585"> <i class="fal "></i> Hania </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="586"> <i class="fal "></i> HOWO </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="587"> <i class="fal "></i> Hyundai </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="588"> <i class="fal "></i> IFA </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="589"> <i class="fal "></i> International </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="590"> <i class="fal "></i> Isuzu </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="591"> <i class="fal "></i> IVECO </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="592"> <i class="fal "></i> Kia </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="593"> <i class="fal "></i> MAN </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="594"> <i class="fal "></i> Mazda </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="595"> <i class="fal "></i> Mercedes </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="596"> <i class="fal "></i> Mitsubishi </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="597"> <i class="fal "></i> Nissan </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="598"> <i class="fal "></i> Renault </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="599"> <i class="fal "></i> Scania </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="600"> <i class="fal "></i> Shaanxi-MAN </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="601"> <i class="fal "></i> Tata </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="602"> <i class="fal "></i> Tatra </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="603"> <i class="fal "></i> YueJin </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="604"> <i class="fal "></i> Volvo </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="605"> <i class="fal "></i> KAMAZ </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="606"> <i class="fal "></i> Other </a>
+																</li>
+														</ul>
+												</li>
+												<li class="branch">
+														<span>
+																Special machinery
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="608"> <i class="fal "></i> Bulldozers / tractors </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="609"> <i class="fal "></i> Groundscare </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="610"> <i class="fal "></i> Loaders </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="611"> <i class="fal "></i> Tippers </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="612"> <i class="fal "></i> Construction machinery </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="613"> <i class="fal "></i> Excavators </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="614"> <i class="fal "></i> Special machinery equipment </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="615"> <i class="fal "></i> Other construction equipment </a>
+																</li>
+														</ul>
+												</li>
+												<li>
+														<a class="choice" categoryid="616"> <i class="fal "></i> Agricultural machinery </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="617"> <i class="fal "></i> Water transport </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="618"> <i class="fal "></i> Air Transport </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="619"> <i class="fal "></i> Trailers and motor homes </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="620"> <i class="fal "></i> Other transport </a>
+												</li>
+										</ul>
+								</li>
+								<li class="parent branch">
+										<span>
+												<i class="fal fa-tools">
+												</i>
+												Spare parts for transport
+										</span>
+										<ul>
+												<li class="branch">
+														<span>
+																Auto parts and accessories
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="623"> <i class="fal "></i> Auto parts </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="624"> <i class="fal "></i> Car accessories </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="625"> <i class="fal "></i> Car audio </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="626"> <i class="fal "></i> GPS Navigation / DVR </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="627"> <i class="fal "></i> Transport for parts </a>
+																</li>
+														</ul>
+												</li>
+												<li class="branch">
+														<span>
+																Tires, wheels
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="629"> <i class="fal "></i> Auto tires </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="630"> <i class="fal "></i> Moto tires </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="631"> <i class="fal "></i> Disks </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="632"> <i class="fal "></i> Wheel assembly </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="633"> <i class="fal "></i> Caps </a>
+																</li>
+														</ul>
+												</li>
+												<li>
+														<a class="choice" categoryid="634"> <i class="fal "></i> Spare parts for special &amp; agricultural machinery </a>
+												</li>
+												<li class="branch">
+														<span>
+																Motorcycle parts and accessories
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="636"> <i class="fal "></i> Motorcycle parts </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="637"> <i class="fal "></i> Moto equipment </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="638"> <i class="fal "></i> Moto accessories </a>
+																</li>
+														</ul>
+												</li>
+												<li>
+														<a class="choice" categoryid="639"> <i class="fal "></i> Other spare parts </a>
+												</li>
+										</ul>
+								</li>
+								<li class="parent branch">
+										<span>
+												<i class="fal fa-digging">
+												</i>
+												Job
+										</span>
+										<ul>
+												<li>
+														<a class="choice" categoryid="641"> <i class="fal "></i> Retail trading / Sales / Purchases </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="642"> <i class="fal "></i> Transport and Logistics </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="643"> <i class="fal "></i> Development </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="644"> <i class="fal "></i> Telecom and Communications </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="645"> <i class="fal "></i> Bars and Restaurants </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="646"> <i class="fal "></i> Jurisprudence and Accounting </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="647"> <i class="fal "></i> Personnel Management / HR </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="648"> <i class="fal "></i> Safety and Security </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="649"> <i class="fal "></i> Home staff </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="650"> <i class="fal "></i> Beauty / Fitness / Sport </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="651"> <i class="fal "></i> Tourism / Vacation I Entertainment </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="652"> <i class="fal "></i> Education </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="653"> <i class="fal "></i> Culture and Art </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="654"> <i class="fal "></i> Medicine and Pharmacy </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="655"> <i class="fal "></i> IT / Telecom / Computers </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="656"> <i class="fal "></i> Banks / Finance / Insurance </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="657"> <i class="fal "></i> Real Estate </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="658"> <i class="fal "></i> Marketing / Advertising / Design </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="659"> <i class="fal "></i> Production and Energy </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="660"> <i class="fal "></i> Agriculture / Agrobusiness / Forestry </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="661"> <i class="fal "></i> Secretariat / Administration </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="662"> <i class="fal "></i> Part-time employment </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="663"> <i class="fal "></i> Career start / Work for students </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="664"> <i class="fal "></i> Service and Life </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="665"> <i class="fal "></i> Other occupations </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="666"> <i class="fal "></i> Work abroad </a>
+												</li>
+										</ul>
+								</li>
+								<li class="parent branch">
+										<span>
+												<i class="fal fa-paw">
+												</i>
+												Animals
+										</span>
+										<ul>
+												<li>
+														<a class="choice" categoryid="668"> <i class="fal "></i> Free of charge </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="669"> <i class="fal "></i> Dogs </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="670"> <i class="fal "></i> Cats </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="671"> <i class="fal "></i> Aquarium </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="672"> <i class="fal "></i> Birds </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="673"> <i class="fal "></i> Gnawers </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="674"> <i class="fal "></i> Reptiles </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="675"> <i class="fal "></i> Farm animals </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="676"> <i class="fal "></i> Other animals </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="677"> <i class="fal "></i> Pet supplies </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="678"> <i class="fal "></i> Animal copulation </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="679"> <i class="fal "></i> Lost and found </a>
+												</li>
+										</ul>
+								</li>
+								<li class="parent branch">
+										<span>
+												<i class="fal fa-home">
+												</i>
+												House
+										</span>
+										<ul>
+												<li>
+														<a class="choice" categoryid="681"> <i class="fal "></i> Stationery </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="682"> <i class="fal "></i> Consumer goods </a>
+												</li>
+												<li class="branch">
+														<span>
+																Furniture
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="684"> <i class="fal "></i> Living Room Furniture </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="685"> <i class="fal "></i> Furniture for a bedroom </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="686"> <i class="fal "></i> Hallway furniture </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="687"> <i class="fal "></i> Kitchen furniture </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="688"> <i class="fal "></i> Furniture for a bathroom </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="689"> <i class="fal "></i> Office furniture </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="690"> <i class="fal "></i> Furniture to order </a>
+																</li>
+														</ul>
+												</li>
+												<li>
+														<a class="choice" categoryid="691"> <i class="fal "></i> Foodstuffs </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="692"> <i class="fal "></i> Water and Drinks </a>
+												</li>
+												<li class="branch">
+														<span>
+																Interior items
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="694"> <i class="fal "></i> Lamps </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="695"> <i class="fal "></i> Textile </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="696"> <i class="fal "></i> Window Decor </a>
+																</li>
+														</ul>
+												</li>
+												<li class="branch">
+														<span>
+																Construction and repair
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="698"> <i class="fal "></i> Ventilation </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="699"> <i class="fal "></i> Plumbing </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="700"> <i class="fal "></i> Heating </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="701"> <i class="fal "></i> Electrics </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="702"> <i class="fal "></i> Lumber </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="703"> <i class="fal "></i> Finishing and facing materials </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="704"> <i class="fal "></i> Windows / doors / glass / mirrors </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="705"> <i class="fal "></i> Paintwork materials </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="706"> <i class="fal "></i> Rolled metal products / fittings </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="707"> <i class="fal "></i> Fasteners </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="708"> <i class="fal "></i> Brick / concrete / foam blocks </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="709"> <i class="fal "></i> Other building materials </a>
+																</li>
+														</ul>
+												</li>
+												<li class="branch">
+														<span>
+																Instruments
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="711"> <i class="fal "></i> Gas powered tools </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="712"> <i class="fal "></i> Hand tools </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="713"> <i class="fal "></i> Power Tools </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="714"> <i class="fal "></i> Pneumatic tools </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="715"> <i class="fal "></i> Other tools </a>
+																</li>
+														</ul>
+												</li>
+												<li>
+														<a class="choice" categoryid="716"> <i class="fal "></i> Dishes and kitchen utensils </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="717"> <i class="fal "></i> Other household goods </a>
+												</li>
+										</ul>
+								</li>
+								<li class="parent branch">
+										<span>
+												<i class="fal fa-tree-alt">
+												</i>
+												Garden
+										</span>
+										<ul>
+												<li>
+														<a class="choice" categoryid="719"> <i class="fal "></i> Consumer goods </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="720"> <i class="fal "></i> Furniture </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="721"> <i class="fal "></i> Garden and kailyard </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="722"> <i class="fal "></i> Construction and repair </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="723"> <i class="fal "></i> Instruments </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="724"> <i class="fal "></i> Houseplants </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="725"> <i class="fal "></i> Garden tools </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="726"> <i class="fal "></i> Household equipment </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="727"> <i class="fal "></i> Household chemicals </a>
+												</li>
+										</ul>
+								</li>
+								<li class="parent branch">
+										<span>
+												<i class="fal fa-plug">
+												</i>
+												Electronics
+										</span>
+										<ul>
+												<li class="branch">
+														<span>
+																Phones &amp; Accessories
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="730"> <i class="fal "></i> Spare parts for phones </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="731"> <i class="fal "></i> Phone Accessories </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="732"> <i class="fal "></i> Mobile / smartphones </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="733"> <i class="fal "></i> Walkie-talkies and other telephones </a>
+																</li>
+														</ul>
+												</li>
+												<li class="branch">
+														<span>
+																Computers &amp; Accessories
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="735"> <i class="fal "></i> Desktop Computers </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="736"> <i class="fal "></i> Servers </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="737"> <i class="fal "></i> Parts, Accessories </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="738"> <i class="fal "></i> Peripherals </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="739"> <i class="fal "></i> Monitors </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="740"> <i class="fal "></i> External drives </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="741"> <i class="fal "></i> Consumables </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="742"> <i class="fal "></i> Other </a>
+																</li>
+														</ul>
+												</li>
+												<li class="branch">
+														<span>
+																Photo and Video
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="744"> <i class="fal "></i> Digital cameras </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="745"> <i class="fal "></i> Camcorders </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="746"> <i class="fal "></i> Action Cameras </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="747"> <i class="fal "></i> Lenses </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="748"> <i class="fal "></i> Tripods / Monopods </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="749"> <i class="fal "></i> Flash units </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="750"> <i class="fal "></i> Accessories for cameras / camcorders </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="751"> <i class="fal "></i> Telescopes / binoculars </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="752"> <i class="fal "></i> Film cameras </a>
+																</li>
+														</ul>
+												</li>
+												<li class="branch">
+														<span>
+																TV and Video equipment
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="754"> <i class="fal "></i> Media Players </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="755"> <i class="fal "></i> Televisions </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="756"> <i class="fal "></i> Projectors </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="757"> <i class="fal "></i> Accessories for TV / video </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="758"> <i class="fal "></i> Satellite TV </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="759"> <i class="fal "></i> Other TV / video equipment </a>
+																</li>
+														</ul>
+												</li>
+												<li class="branch">
+														<span>
+																Audio equipment
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="761"> <i class="fal "></i> Mp3 players </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="762"> <i class="fal "></i> Receivers </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="763"> <i class="fal "></i> Musical centers </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="764"> <i class="fal "></i> Loudspeakers </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="765"> <i class="fal "></i> Headphones </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="766"> <i class="fal "></i> Radio receivers </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="767"> <i class="fal "></i> Portable speakers </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="768"> <i class="fal "></i> Amplifiers / Receivers </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="769"> <i class="fal "></i> Cd / md / vinyl players </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="770"> <i class="fal "></i> Other audio equipment </a>
+																</li>
+														</ul>
+												</li>
+												<li class="branch">
+														<span>
+																Games and game consoles
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="772"> <i class="fal "></i> Games for consoles </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="773"> <i class="fal "></i> Сonsoles </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="774"> <i class="fal "></i> Games for PC </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="775"> <i class="fal "></i> Accessories </a>
+																</li>
+														</ul>
+												</li>
+												<li class="branch">
+														<span>
+																Tablets / Electronic
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="777"> <i class="fal "></i> test </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="778"> <i class="fal "></i> test </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="779"> <i class="fal "></i> test </a>
+																</li>
+														</ul>
+												</li>
+												<li class="branch">
+														<span>
+																Laptops &amp; Accessories
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="781"> <i class="fal "></i> Tablet computers </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="782"> <i class="fal "></i> E-books </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="783"> <i class="fal "></i> Graphic tablets </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="784"> <i class="fal "></i> Spare parts for tablets </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="785"> <i class="fal "></i> Accessories for tablets </a>
+																</li>
+														</ul>
+												</li>
+												<li class="branch">
+														<span>
+																Home Appliances
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="787"> <i class="fal "></i> Vacuum cleaners </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="788"> <i class="fal "></i> Irons </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="789"> <i class="fal "></i> Washing machines </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="790"> <i class="fal "></i> Sewing machines and overlocks </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="791"> <i class="fal "></i> Knitting machines </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="792"> <i class="fal "></i> Water filters </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="793"> <i class="fal "></i> Other home appliances </a>
+																</li>
+														</ul>
+												</li>
+												<li class="branch">
+														<span>
+																Kitchen Appliances
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="795"> <i class="fal "></i> Microwaves </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="796"> <i class="fal "></i> Refrigerators </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="797"> <i class="fal "></i> Cookers / Stoves </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="798"> <i class="fal "></i> Electric kettles </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="799"> <i class="fal "></i> Coffee / Coffee Makers </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="800"> <i class="fal "></i> Food processors / choppers </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="801"> <i class="fal "></i> Steamers / Multi Cookers </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="802"> <i class="fal "></i> Bread makers </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="803"> <i class="fal "></i> Dishwashers </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="804"> <i class="fal "></i> Hoods </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="805"> <i class="fal "></i> Other kitchen appliances </a>
+																</li>
+														</ul>
+												</li>
+												<li>
+														<a class="choice" categoryid="806"> <i class="fal "></i> Climatic equipment </a>
+												</li>
+												<li class="branch">
+														<span>
+																Individual care
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="808"> <i class="fal "></i> Shavers, epilators, clippers </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="809"> <i class="fal "></i> Hair dryers, hair styling </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="810"> <i class="fal "></i> Scales </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="811"> <i class="fal "></i> Other personal care equipment </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="812"> <i class="fal "></i> Electronic cigarettes, vaporizers and accessories </a>
+																</li>
+														</ul>
+												</li>
+												<li>
+														<a class="choice" categoryid="813"> <i class="fal "></i> Accessories / Completing </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="814"> <i class="fal "></i> Other electronics </a>
+												</li>
+										</ul>
+								</li>
+								<li class="parent branch">
+										<span>
+												<i class="fal fa-briefcase">
+												</i>
+												Business
+										</span>
+										<ul>
+												<li class="branch">
+														<span>
+																Construction / Repair / Cleaning
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="817"> <i class="fal "></i> Construction services </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="818"> <i class="fal "></i> Design / Architecture </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="819"> <i class="fal "></i> Decoration / repair </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="820"> <i class="fal "></i> Windows / Doors / Balconies </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="821"> <i class="fal "></i> Plumbing / Communications </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="822"> <i class="fal "></i> Household repairs / cleaning </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="823"> <i class="fal "></i> Ventilation / air conditioning </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="824"> <i class="fal "></i> Electrician </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="825"> <i class="fal "></i> Ready-made designs </a>
+																</li>
+														</ul>
+												</li>
+												<li>
+														<a class="choice" categoryid="826"> <i class="fal "></i> Transportation / Rental </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="827"> <i class="fal "></i> Advertising / Printing / Marketing / Internet </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="828"> <i class="fal "></i> Raw materials </a>
+												</li>
+												<li class="branch">
+														<span>
+																Health and beauty
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="830"> <i class="fal "></i> Haircuts / Hair Extensions </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="831"> <i class="fal "></i> Manicure / Nail Extension </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="832"> <i class="fal "></i> Makeup / Cosmetology / Eyelash Extension </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="833"> <i class="fal "></i> Medicine </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="834"> <i class="fal "></i> Massage </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="835"> <i class="fal "></i> Beauty / Health - Other </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="836"> <i class="fal "></i> Psychological services </a>
+																</li>
+														</ul>
+												</li>
+												<li>
+														<a class="choice" categoryid="837"> <i class="fal "></i> Equipment </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="838"> <i class="fal "></i> Business sale </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="839"> <i class="fal "></i> Other </a>
+												</li>
+										</ul>
+								</li>
+								<li class="parent branch">
+										<span>
+												<i class="fal fa-hands-usd">
+												</i>
+												Services
+										</span>
+										<ul>
+												<li>
+														<a class="choice" categoryid="841"> <i class="fal "></i> Construction / Repair / Cleaning </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="842"> <i class="fal "></i> Financial services and Partnerships </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="843"> <i class="fal "></i> Transportation and Rental vehicles </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="844"> <i class="fal "></i> Babysitters and Nurses </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="845"> <i class="fal "></i> Health and Beauty </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="846"> <i class="fal "></i> Education </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="847"> <i class="fal "></i> Sport </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="848"> <i class="fal "></i> Pet services </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="849"> <i class="fal "></i> Entertainment / Art / Photo / Video </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="850"> <i class="fal "></i> Tourism / Immigration </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="851"> <i class="fal "></i> Auto and Motorcycle </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="852"> <i class="fal "></i> Repair and Maintenance of equipment </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="853"> <i class="fal "></i> Network marketing </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="854"> <i class="fal "></i> Legal services </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="855"> <i class="fal "></i> Goods procurement </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="856"> <i class="fal "></i> Other services </a>
+												</li>
+										</ul>
+								</li>
+								<li class="parent branch">
+										<span>
+												<i class="fal fa-bags-shopping">
+												</i>
+												Fashion and Style
+										</span>
+										<ul>
+												<li class="branch">
+														<span>
+																Clothes and Shoes
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="859"> <i class="fal "></i> Women's clothing </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="860"> <i class="fal "></i> Lingerie, swimwear </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="861"> <i class="fal "></i> Women's shoes </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="862"> <i class="fal "></i> Clothes for pregnant women </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="863"> <i class="fal "></i> Men's Clothing </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="864"> <i class="fal "></i> Men's Underwear </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="865"> <i class="fal "></i> Men's shoes </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="866"> <i class="fal "></i> Headgear </a>
+																</li>
+														</ul>
+												</li>
+												<li class="branch">
+														<span>
+																Wedding &amp; Accessories
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="868"> <i class="fal "></i> Wedding accessories </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="869"> <i class="fal "></i> Wedding dresses / Suits </a>
+																</li>
+														</ul>
+												</li>
+												<li>
+														<a class="choice" categoryid="870"> <i class="fal "></i> Wrist Watch </a>
+												</li>
+												<li class="branch">
+														<span>
+																Accessories
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="872"> <i class="fal "></i> Jewelry </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="873"> <i class="fal "></i> Bags </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="874"> <i class="fal "></i> Jewelry </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="875"> <i class="fal "></i> Other accessories </a>
+																</li>
+														</ul>
+												</li>
+												<li>
+														<a class="choice" categoryid="876"> <i class="fal "></i> Gifts &amp; presents </a>
+												</li>
+												<li class="branch">
+														<span>
+																Health and Beauty
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="878"> <i class="fal "></i> Cosmetics </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="879"> <i class="fal "></i> Perfumes </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="880"> <i class="fal "></i> Care products </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="881"> <i class="fal "></i> Equipment for hairdressers / beauty salons </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="882"> <i class="fal "></i> Items for the disabled </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="883"> <i class="fal "></i> Other health and beauty products </a>
+																</li>
+														</ul>
+												</li>
+												<li>
+														<a class="choice" categoryid="884"> <i class="fal "></i> Fashion miscellaneous </a>
+												</li>
+										</ul>
+								</li>
+								<li class="parent branch">
+										<span>
+												<i class="fal fa-umbrella-beach">
+												</i>
+												Hobby and Leisure
+										</span>
+										<ul>
+												<li class="branch">
+														<span>
+																Antiques and Collections
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="887"> <i class="fal "></i> Antique furniture </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="888"> <i class="fal "></i> Bookinistry </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="889"> <i class="fal "></i> Painting </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="890"> <i class="fal "></i> Art objects </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="891"> <i class="fal "></i> Collecting </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="892"> <i class="fal "></i> Crafts / Needlework </a>
+																</li>
+														</ul>
+												</li>
+												<li class="branch">
+														<span>
+																Musical instruments
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="894"> <i class="fal "></i> Acoustic Guitars </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="895"> <i class="fal "></i> Bass Guitar </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="896"> <i class="fal "></i> Electric Guitars </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="897"> <i class="fal "></i> Pianos </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="898"> <i class="fal "></i> Wind instruments </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="899"> <i class="fal "></i> Amplifiers </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="900"> <i class="fal "></i> Synthesizers </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="901"> <i class="fal "></i> Percussion Instruments </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="902"> <i class="fal "></i> Studio equipment </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="903"> <i class="fal "></i> Accessories for Musical Instruments </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="904"> <i class="fal "></i> Other </a>
+																</li>
+														</ul>
+												</li>
+												<li>
+														<a class="choice" categoryid="905"> <i class="fal "></i> Books and Magazines </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="906"> <i class="fal "></i> CD / DVD / Plates </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="907"> <i class="fal "></i> Tickets </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="908"> <i class="fal "></i> Search for travel </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="909"> <i class="fal "></i> Search for bands and musicians </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="910"> <i class="fal "></i> Others </a>
+												</li>
+										</ul>
+								</li>
+								<li class="parent branch">
+										<span>
+												<i class="fal fa-running">
+												</i>
+												Sport
+										</span>
+										<ul>
+												<li class="branch">
+														<span>
+																Bicycles
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="913"> <i class="fal "></i> Bicycles </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="914"> <i class="fal "></i> Bicycle parts </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="915"> <i class="fal "></i> Bicycle accessories </a>
+																</li>
+														</ul>
+												</li>
+												<li>
+														<a class="choice" categoryid="916"> <i class="fal "></i> Skis and Snowboards </a>
+												</li>
+												<li class="branch">
+														<span>
+																Skates
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="918"> <i class="fal "></i> Botas </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="919"> <i class="fal "></i> CCM </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="920"> <i class="fal "></i> Easton </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="921"> <i class="fal "></i> Fila </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="922"> <i class="fal "></i> Fischer </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="923"> <i class="fal "></i> GRAF </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="924"> <i class="fal "></i> Hespeler </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="925"> <i class="fal "></i> Jackson </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="926"> <i class="fal "></i> K2 </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="927"> <i class="fal "></i> Libera </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="928"> <i class="fal "></i> Nike bauer </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="929"> <i class="fal "></i> Nordway </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="930"> <i class="fal "></i> PowerSlide </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="931"> <i class="fal "></i> RBK </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="932"> <i class="fal "></i> Reebok </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="933"> <i class="fal "></i> Roces </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="934"> <i class="fal "></i> Team Canada </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="935"> <i class="fal "></i> WIFA </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="936"> <i class="fal "></i> Another brand </a>
+																</li>
+														</ul>
+												</li>
+												<li>
+														<a class="choice" categoryid="937"> <i class="fal "></i> Roller Skates </a>
+												</li>
+												<li class="branch">
+														<span>
+																Athletics and Fitness
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="939"> <i class="fal "></i> Fitness equipment </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="940"> <i class="fal "></i> Weightlifting </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="941"> <i class="fal "></i> Fitness </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="942"> <i class="fal "></i> Sports Nutrition </a>
+																</li>
+														</ul>
+												</li>
+												<li class="branch">
+														<span>
+																Tourism
+														</span>
+														<ul>
+																<li>
+																		<a class="choice" categoryid="944"> <i class="fal "></i> GPS navigators </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="945"> <i class="fal "></i> Tents </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="946"> <i class="fal "></i> Sleeping bags </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="947"> <i class="fal "></i> Backpacks </a>
+																</li>
+																<li>
+																		<a class="choice" categoryid="948"> <i class="fal "></i> Other travel goods </a>
+																</li>
+														</ul>
+												</li>
+												<li>
+														<a class="choice" categoryid="949"> <i class="fal "></i> Hunting and Fishing </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="950"> <i class="fal "></i> Rocket games </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="951"> <i class="fal "></i> Water Sports </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="952"> <i class="fal "></i> Football </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="953"> <i class="fal "></i> Hockey </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="954"> <i class="fal "></i> Martial Arts and Boxing </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="955"> <i class="fal "></i> Board games </a>
+												</li>
+												<li>
+														<a class="choice" categoryid="956"> <i class="fal "></i> Other Games </a>
+												</li>
+										</ul>
+								</li>
+								<li>
+										<a class="choice" categoryid="957">Giveaway for Free</a>
+								</li>
+								<li>
+										<a class="choice" categoryid="958">Swap</a>
+								</li>
+						</ul>
+				</nav>
+				<div class="errors">
+				</div>
+				<input type="date" name="end_date" placeholder="Choose end date" required=""
+				id="id_end_date">
+				<div class="errors">
+				</div>
+				<textarea name="description" cols="40" rows="10" placeholder="Description"
+				required="" id="id_description">
+				</textarea>
+				<div class="errors">
+				</div>
+				<input type="text" name="location_text" placeholder="Enter first letters"
+				required="" id="id_location_text" autocomplete="off">
+				<div class="errors">
+				</div>
+				<input type="hidden" name="location_lat" id="id_location_lat">
+				<div class="errors">
+				</div>
+				<input type="hidden" name="location_lng" id="id_location_lng">
+				<div class="errors">
+				</div>
+		</div>
+        <div class="pac-card" id="pac-card">
+            <div>
+                <div id="type-selector" class="pac-controls">
+                    <input type="radio" name="type" id="changetype-all" checked="checked">
+                    <label for="changetype-all">All</label>
+
+                    <input type="radio" name="type" id="changetype-establishment">
+                    <label for="changetype-establishment">Establishments</label>
+
+                    <input type="radio" name="type" id="changetype-address">
+                    <label for="changetype-address">Addresses</label>
+
+                    <input type="radio" name="type" id="changetype-geocode">
+                    <label for="changetype-geocode">Geocodes</label>
+                </div>
+                <div id="strict-bounds-selector" class="pac-controls">
+                    <input type="checkbox" id="use-strict-bounds" value="">
+                    <label for="use-strict-bounds">Strict Bounds</label>
+                </div>
+            </div>
+        </div>
+        <div id="map" class="dvm-offer-map"></div>
+        <div id="infowindow-content">
+            <img src="" width="16" height="16" id="place-icon">
+            <span id="place-name" class="title"></span><br>
+            <span id="place-address"></span>
+        </div>
+        <div class="dvm-save-block">
+            <button id="submit" class="dvm-button">{% trans 'Publish'%}</button>
+        </div>
+    </form>
+</div>
+{%endblock%}
+{%block JS%}
+    <script src="/static/js/add/auction.js"></script>
+{%endblock%}

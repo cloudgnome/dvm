@@ -1,0 +1,35 @@
+{%extends 'index.html'%}
+{%block body%}
+	<link rel="stylesheet" href="/static/css/font-awesome-5.0/css/all.min.css">
+	<div class="overlay"></div>
+	<div id="body">
+		<main class="main-block">
+			<div class="dvm-logo">
+				<a href="/user/profile"><img src="/static/image/logo.svg"></a>
+			</div>
+			<div class="dvm-text dvm-text-center dvm-text-login">
+				<h1>Recover Password</h1>
+				<p>DVMarketplace - the future of trading</p>
+			</div>
+			{%if form%}
+				<form id="form" action="/user/recover" method="POST" class="dvm-form dvm-recover-form">
+					{%csrf_token%}
+					<label for="id_email"></label>
+					<div class="inputs">
+						<div class="dvm-email">
+						<input type="email" name="email" placeholder="name@dvm-market.com" required="" id="id_email">
+						<div class="errors"></div>
+						<span class="dvm-focus-input dvm-icon-email"></span>
+						</div>
+					</div>
+					<button id="submit" class="dvm-button">Restore</button>
+				</form>
+			{%else%}
+				<form id="form" action="">
+					<label>Request sent successfully. Check your inbox.</label>
+				</form>
+			{%endif%}
+		</main>
+	</div>
+	<script src="/static/js/recover.js"></script>
+{%endblock%}

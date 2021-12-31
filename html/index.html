@@ -1,0 +1,79 @@
+{%load i18n%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DVM-Market</title>
+	<link rel="stylesheet" href="/static/css/main.css">
+	<link rel="stylesheet" href="/static/css/user/signin.css">
+	<link rel="stylesheet" href="/static/css/user/profile.css">
+	<link rel="stylesheet" href="/static/css/font-awesome-5.0/css/all.min.css">
+	<link rel="stylesheet" href="/static/css/menu.css">
+</head>
+<body>
+	<div class="dvm-preloader">
+		<img src="/static/image/logo.svg">
+		<div class="lds-ellipsis">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<div id="p_prldr" class="dvm-background"></div>
+	<script src="/static/js/vanilla.js"></script>
+	<script src="/static/js/http.js"></script>
+	<script src="/static/js/validate.js"></script>
+	<script src="/static/js/urls.js"></script>
+	<script src="/static/js/slider.js"></script>
+	<script src="/static/js/initMap.js"></script>
+	<script src="/static/js/gallery.js"></script>
+	{%block body%}
+		{%block content%}
+		{%endblock%}
+		{%block panel%}
+			<div id="panel">
+				<div class="dvm-menu-item">
+					<a href="/">
+						<div class="icon"><i class="fal fa-bullhorn"></i></div>
+						<div class="dvm-menu-name">{% trans 'Offers' %}</div>
+					</a>
+				</div>
+				<div class="dvm-menu-item">
+					<a href="/auctions">
+						<div class="icon"><i class="fal fa-gavel"></i></div>
+						<div class="dvm-menu-name">{% trans 'Auctions' %}</div>
+					</a>
+				</div>
+				<div class="dvm-menu-item">
+					<a href="/add/offer">
+						<div class="icon"><i class="fal fa-plus-circle"></i></div>
+						<div class="dvm-menu-name">{% trans 'Add Offer' %}</div>
+					</a>
+				</div>
+				<div class="dvm-menu-item">
+					<a href="/chat/messages">
+						<div class="icon"><i class="fal fa-comment"></i></div>
+						<div class="dvm-menu-name">{% trans 'Messages' %}</div>
+					</a>
+				</div>
+				<div class="dvm-menu-item">
+					<a href="/user/profile">
+						<div class="icon"><i class="fal fa-address-card"></i></div>
+						<div class="dvm-menu-name">{% trans 'Profile' %}</div>
+					</a>
+				</div>
+			</div>
+			<div class="panel-button">
+				<i class="fal fa-layer-group"></i>
+			</div>
+		{%endblock%}
+	{%endblock%}
+	{%include 'nav.html'%}
+	<script src="/static/js/panel.js"></script>
+	<script src="/static/js/menu.js"></script>
+	{%block JS%}
+	{%endblock%}
+</body>
+</html>

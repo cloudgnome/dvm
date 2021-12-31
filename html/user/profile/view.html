@@ -1,0 +1,50 @@
+{%extends 'user/profile/main.html'%}
+{%load i18n%}
+{%block main%}
+<div id="breadcrumbs" class="dvm-breadcumbs">
+    <div>
+        <a href="/user/profile">{% trans 'Profile Settings'%}</a>
+        <i class="fal fa-angle-double-right"></i>
+        <a href="/user/view">{% trans 'View Mode'%}</a>
+    </div>
+</div>
+<div class="dvm-view-mode">
+    <div class="title">
+        {% trans 'Change Offers view settings:'%}
+    </div>
+    <div class="view-list">
+        <div class="dvm-icon-block" name="offersViewMode" value="dvm-offers-full-mode">
+            <i class="fal fa-square"></i>
+            <span>{% trans 'Large' %}</span>
+        </div>
+        <div class="dvm-icon-block" name="offersViewMode" value="dvm-offers-grid-mode">
+            <i class="fal fa-th-large"></i>
+            <span>{% trans 'Tiles' %}</span>
+        </div>
+        <div class="dvm-icon-block" name="offersViewMode" value="dvm-offers-list-mode">
+            <i class="fal fa-list-ul"></i>
+            <span>{% trans 'List' %}</span>
+        </div>
+    </div>
+    <div class="title">
+        {% trans 'Change Auctions view settings:'%}
+    </div>
+    <div class="view-list">
+        <div class="dvm-icon-block" name="auctionsViewMode" value="dvm-auctions-full-mode">
+            <i class="fal fa-square"></i>
+            <span>{% trans 'Large' %}</span>
+        </div>
+        <div class="dvm-icon-block" name="auctionsViewMode" value="dvm-auctions-grid-mode">
+            <i class="fal fa-th-large"></i>
+            <span>{% trans 'Tiles' %}</span>
+        </div>
+        <div class="dvm-icon-block" name="auctionsViewMode" value="dvm-auctions-list-mode">
+            <i class="fal fa-list-ul"></i>
+            <span>{% trans 'List' %}</span>
+        </div>
+    </div>
+</div>
+{%endblock%}
+{%block JS%}
+    <script src="/static/js/user/view.js"></script>
+{%endblock%}

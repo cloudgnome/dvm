@@ -1,0 +1,55 @@
+{%extends 'user/profile/main.html'%}
+{%load i18n%}
+{%block main%}
+<link rel="stylesheet" href="/static/css/user/business.css">
+<div id="breadcrumbs" class="dvm-breadcumbs">
+    <div><a href="/user/profile">{% trans 'Profile Settings'%}</a><i class="fal fa-angle-double-right"></i><a
+            href="/user/business">{% trans 'Business Page'%}</a></div>
+</div>
+<div class="dvm-bussiness-mode">
+    <form id="form" action="/user/business" method="POST">
+        {%csrf_token%}
+        <div class="inputs">
+            {%for fieldset in form.fieldsets%}
+            <div class="fieldset">
+                {%for field in fieldset%}
+                <div class="field">
+                    {{field}}
+                    <div class="errors">{{field.errors}}</div>
+                </div>
+                {%endfor%}
+            </div>
+            {%endfor%}
+        </div>
+        <div id="gallery">
+            <div id="images">
+                {%if not user.company.gallery.all %}
+                <div class="dvm-column-image">
+                    <div id="plus" class="noselect"></div>
+                    <div id="plus" class="noselect"></div>
+                    <div id="plus" class="noselect"></div>
+                    <div id="plus" class="noselect"></div>
+                </div>
+                <div class="dvm-column-image">
+                    <div id="plus" class="noselect"></div>
+                    <div id="plus" class="noselect"></div>
+                    <div id="plus" class="noselect"></div>
+                    <div id="plus" class="noselect"></div>
+                </div>
+                {%else%}
+                {%for image in user.company.gallery.all%}
+                <div class="image ui-sortable-handle">
+                    <div class="remove" item-id="{{image.id}}">+</div>
+                    <img src="{{image}}" alt="">
+                </div>
+                {%endfor%}
+                {%endif%}
+            </div>
+        </div>
+        <div class="dvm-save-block">
+            <button class="dvm-button dvm-button-save">{% trans 'Save' %}</button>
+        </div>
+    </form>
+</div>
+<script src="/static/js/business.js"></script>
+{%endblock%}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Password Recovery</title>
+</head>
+<body style="font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:16px 0;">
+	<div style="font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0 auto; padding:10px; width: 600px;background: #fff;">
+		<div><a href="http://{{BASE_URL}}/" target="_blank"><img src="http://{{BASE_URL}}/static/image/logo.svg" width='200px'></a></div>
+		<p>You sent a password recovery request from your account {{BASE_URL}}?</p>
+		<div style="line-height: 18px; margin-bottom: 12px;">
+			If Yes, then follow the link:<br>
+			http://{{BASE_URL}}/user/change-password?code={{code}}
+			<br>
+			If you did not send a request, just ignore this message.
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+.dvm-message-search-bar {
+    display: flex;
+    width: 350px;
+    margin: 10px auto;
+    padding: 10px 10px;
+    background: rgba(48, 168, 188, 0.90);
+    border-radius: 25px;
+    box-shadow: 0 5px 5px rgba(101, 99, 99, 0.2);
+    z-index: 45; 
+}
+.dvm-message-search-bar .dvm-block1 {
+    width: 100%;
+}
+.dvm-message-search-bar .dvm-block1 i {
+    position: absolute;
+    margin-left: 8px;
+    line-height: 35px;
+    color: #106372;
+}
+.dvm-message-search-bar .dvm-block1 input {
+    width: 98%;
+    height: 35px;
+    padding-left: 24px;
+    padding-right: 10px;
+    border: 1px solid #fff;
+    border-radius: 15px;
+}
+.dvm-message-search-bar .dvm-block2 {
+    display: flex;
+    width: 5%;
+    margin-left: -35px;
+}
+.dvm-message-search-bar .dvm-block2 a {
+    width: 33%;
+    background: transparent;
+    border: 0px;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 60px;
+}
+.dvm-message-search-bar .dvm-block2 a i {
+    background: #116a7a;
+    color: #ffffff;
+    font-size: 14px;
+    height: 35px;
+    width: 35px;
+    line-height: 35px;
+    border-radius: 60px;
+}
+.dvm-message-filter {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 15px 0;
+}
+.dvm-message-filter button {
+    background: rgba(48, 168, 188, 0.90);
+    color: #fff;
+    padding: 5px 15px;
+    margin: 0 5px;
+    text-align: center;
+    border: 0;
+    border-radius: 15px;
+    box-shadow: 0 5px 5px rgba(101, 99, 99, 0.2);
+    cursor: pointer;
+}
+.dvm-message-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 15px;
+    box-shadow: 0 5px 5px rgba(101, 99, 99, 0.2);
+}
+.dvm-message-box .head {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background: rgba(48, 168, 188, 0.90);
+    padding: 10px;
+    font-size: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.dvm-message-box .head .name {
+    display: flex;
+    width: 60%;
+    font-weight: 500;
+    align-items: center;
+}
+.dvm-message-box .head i {
+    width: 10%;
+    display: flex;
+    align-items: center;
+}
+.dvm-message-box .head .tive {
+    display: flex;
+    width: 30%;
+    font-size: 12px;
+    align-items: center;
+}
+.dvm-message-box .message-label {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    color: #136b7b;
+    padding: 5px 15px 10px 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+.dvm-message-box .message-header {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+
+
+
+
+
+

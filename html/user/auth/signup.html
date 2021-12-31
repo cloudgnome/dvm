@@ -1,0 +1,65 @@
+{%extends 'index.html'%}
+{%load i18n%}
+{%block body%}
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	<link rel="stylesheet" href="/static/css/font-awesome-5.0/css/all.min.css">
+	<div class="overlay"></div>
+	<div id="body">
+		<main class="main-block">
+			<div class="dvm-logo">
+				<a href="/user/profile"><img src="/static/image/logo.svg"></a>
+			</div>
+			<div class="dvm-text dvm-text-center dvm-text-login">
+			<h1>Create an Account</h1>
+			<p>DVMarketplace - the future of trading</p>
+			</div>
+
+			<form action="/user/signup" method="post" id="form" class="dvm-form dvm-sign-up-form">
+				{%csrf_token%}
+
+					<div class="inputs">
+						<div class="dvm-login">
+						<input type="text" name="email" placeholder="Email" required="" id="id_email">
+						<span class="dvm-focus-input dvm-icon-email"></span>
+						</div>
+						<div class="errors"></div>
+					
+						<div class="dvm-login">
+						<input type="text" name="fname" placeholder="First name" required="" id="id_fname">
+						<span class="dvm-focus-input dvm-icon-login"></span>
+						</div>
+						<div class="errors"></div>
+					
+						<div class="dvm-login">
+						<input type="text" name="lname" placeholder="Last name" required="" id="id_lname">
+						<span class="dvm-focus-input dvm-icon-login"></span>
+						</div>
+						<div class="errors"></div>
+					
+						<div class="dvm-login">
+						<input type="text" name="phone" placeholder="Phone" required="" id="id_phone">
+						<span class="dvm-focus-input dvm-icon-phone"></span>
+						</div>
+						<div class="errors"></div>
+					
+						<div class="dvm-login">
+						<input type="password" name="password1" placeholder="Password*" required="" id="id_password1">
+						<span class="dvm-focus-input dvm-icon-password"></span>
+						</div>
+						<div class="errors"></div>
+					
+						<div class="dvm-login">
+						<input type="password" name="password2" placeholder="Confirm password*" required="" id="id_password2">
+						<span class="dvm-focus-input dvm-icon-password"></span>
+						</div>
+						<div class="errors"></div>
+					</div>
+				<!-- <div class="g-recaptcha" data-sitekey="6LdF3rcUAAAAAEk2nDETSp_TduLMAH5W8qqb3068"></div> -->
+				<button id="submit" class="dvm-button">{% trans 'Create' %}</button>
+			</form>
+		</main>
+	</div>
+{%endblock%}
+{%block JS%}
+	<script src="/static/js/signup.js"></script>
+{%endblock%}
