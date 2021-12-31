@@ -1,0 +1,49 @@
+{% load i18n %}
+{% load mptt_tags %}
+<nav id="nav" class="menu">
+    <ul>
+	    <div class="menu-header">
+			<div id="prev"><i class="fal fa-chevron-left"></i></div>
+			<div class="dvm-menu-close" onclick="menu.close();"><i class="fal fa-times"></i></div>
+			<span class="dvm-menu-title">{% trans 'Chose a Category'%}</span>
+        </div>
+        {% full_tree_for_model catalog.Category as nodes %}
+        {% recursetree nodes %}
+            {%if node.active%}
+                {%if not node.is_child_node%}
+                    {%if node.is_leaf_node%}
+                        <li>
+                            <a class="choice" categoryId="{{node.id}}">{{node.name}}</a>
+                        </li>
+                    {%else%}
+                        <li class='parent branch'>
+                            <span>
+                                <i class="fal {{node.class_icon}}"></i>
+                                {{node.name}}
+                            </span>
+                            <ul>
+                                {{children}}
+                            </ul>
+                        </li>
+                    {%endif%}
+                {%else%}
+                    {%if node.is_leaf_node%}
+                        <li>
+                            <a class="choice" categoryId="{{node.id}}">
+                                <i class="fal {{node.class_icon}}"></i>
+                                {{node.name}}
+                            </a>
+                        </li>
+                    {%else%}
+                        <li class="branch">
+                            <span>{{node.name}}</span>
+                            <ul>
+                                {{children}}
+                            </ul>
+                        </li>
+                    {%endif%}
+                {%endif%}
+            {%endif%}
+        {% endrecursetree %}
+    </ul>
+</nav>

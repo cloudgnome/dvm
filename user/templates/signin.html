@@ -1,0 +1,23 @@
+{%block main%}
+    <link rel="stylesheet" href="/static/css/signin.css">
+    <div id="body">
+        <main>
+            <form id="form" action="/user/signin/" method="post">
+                {%csrf_token%}
+                <div class="inputs">
+                    {{form.login}}
+                    {{form.password}}
+                    {{form.password.errors|safe}}
+                </div>
+                <button {%if form.errors%}class="inactive"{%endif%}>Войти</button>
+                <a id="forgetPass" href="/user/forget_pass">Восстановить пароль</a>
+                <div id="or">
+                    <div></div>
+                    <span>или</span>
+                    <div></div>
+                </div>
+                <a href="/user/signup/" id="signup">Зарегистрируйтесь</a>
+            </form>
+        </main>
+    </div>
+{%endblock%}

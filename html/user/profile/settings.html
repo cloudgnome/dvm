@@ -1,0 +1,43 @@
+{%extends 'user/profile/main.html'%}
+{%load i18n%}
+{%block avatar%}
+<div class="dvm-profile-user">
+    <label for="editImage">
+        <img src="{{user.image_url}}" alt="">
+        <div class="edit-button">{% trans 'Edit' %}</div>
+    </label>
+    <input type="file" id="editImage">
+</div>
+{%endblock%}
+{%block main%}
+<link rel="stylesheet" href="/static/css/user/business.css">
+<link rel="stylesheet" href="/static/css/user/settings.css">
+<div id="breadcrumbs" class="dvm-breadcumbs">
+    <div>
+        <a href="/user/profile">{% trans 'Profile Settings'%}</a>
+        <i class="fal fa-angle-double-right"></i>
+        <a href="/user/setting">{% trans 'Account'%}</a>
+    </div>
+</div>
+<div class="dvm-setting-mode">
+    <form id="form" action="/user/settings" method="POST">
+        {%csrf_token%}
+        <div class="inputs">
+            {%for fieldset in form.fieldsets%}
+            <div class="fieldset">
+                {%for field in fieldset%}
+                <div class="field">
+                    {{field}}
+                    <div class="errors">{{field.errors}}</div>
+                </div>
+                {%endfor%}
+            </div>
+            {%endfor%}
+        </div>
+        <div class="dvm-save-block">
+            <button class="dvm-button dvm-button-save">{% trans 'Save' %}</button>
+        </div>
+    </form>
+</div>
+<script src="/static/js/settings.js"></script>
+{%endblock%}

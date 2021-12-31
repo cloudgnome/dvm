@@ -1,0 +1,342 @@
+#offer {
+	margin: 0 auto 60px auto;	
+}
+.dvm-offers-top-bar {
+	display: flex;
+    width: 340px;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    right: 0;
+    margin: 20px auto;
+    padding: 10px 10px;
+    background: rgba(48, 168, 188, 0.90);
+    border-radius: 25px;
+    box-shadow: 0 5px 5px rgba(101, 99, 99, 0.2);
+    z-index: 45;
+}
+.dvm-block1 {
+    width: 65%;
+}
+.dvm-block1 input {
+    width: 98%;
+    height: 35px;
+    padding-left: 24px;
+    padding-right: 10px;
+    border: 1px solid #fff;
+    border-radius: 25px;
+}
+.dvm-block1 i {
+    position: absolute;
+    margin-left: 8px;
+    line-height: 35px;
+    color: #106372;
+}
+.dvm-block2 {
+    display: flex;
+    width: 35%;
+}
+.dvm-block2 a {
+    width: 33%;
+    background: transparent;
+    border: 0px;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 60px;
+}
+.dvm-block2 a i {
+    background: #116a7a;
+    color: #ffffff;
+    font-size: 14px;
+    height: 35px;
+    width: 35px;
+    line-height: 35px;
+    border-radius: 60px;
+}
+.dvm-block2 a i:hover {
+    font-weight: 900;
+}
+#infowindow-content .title {
+    font-weight: bold;
+}
+#infowindow-content {
+    display: none;
+}
+#map #infowindow-content {
+    display: inline;
+}
+#slider{
+    height: 197px;
+	margin-top: 75px;
+    margin-bottom: 0px;
+}
+#slider{
+    position: relative;
+    overflow: hidden;
+}
+#slider #carouselSlider{
+    position: absolute;
+    overflow: hidden;
+}
+#carouselSlider img {
+    display: block;
+    object-fit: cover;
+    object-position: top;
+    width: 100%;
+    background: #fff;
+    height: 197px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+#slider .glide__track{
+    height: 100%;
+}
+#slider .glide__slides{
+    height: 100%;
+}
+#slider .glide__bullets{
+    position: absolute;
+    display: flex;
+    top: 175px;
+    z-index: 2;
+    justify-content: center;
+    width: 100%;
+    bottom: unset;
+}
+#slider .glide__bullet{
+    width: 18px;
+    height: 6px;
+    border-radius: 25px;
+    top: 15px;
+    left: 183px;
+    background: #fff;
+    margin-right: 9px;
+    cursor: pointer;
+}
+#slider .glide__bullet.glide__bullet--active{
+    background-color: #30a8bc;
+}
+#slider .prev{
+    left: 14px;
+}
+#slider .next{
+    right: 17px;
+    top: 44.5%;
+}
+#slider .arrow {
+    position: absolute;
+    top: 36%;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    background: rgba(48, 168, 188, 0.50);
+    text-align: center;
+    border-radius: 50px;
+    z-index: 1;
+    cursor: pointer;
+}
+#slider .arrow:active {
+	background: rgba(43, 147, 165);
+	transition: all .1s;
+}
+.dvm-image-arrows {
+    font-family: "Font Awesome 5 Pro";
+    color: #fff;
+    font-size: 16px;
+    font-weight: 300;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+}
+.dvm-image-arrows .prev:before{
+    content: "\f053";
+	font-weight: 900;
+}
+.dvm-image-arrows .next:before{
+    content: "\f054";
+	font-weight: 900;
+	margin-left: 5px;
+}
+.dvm-offer-info {
+    background: #fff;
+    color: #125560;
+    padding: 15px 20px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+.dvm-offer-info .price {
+    font-size: 18px;
+    font-weight: 700;
+}
+.dvm-offer-info .name {
+    font-size: 18px;
+    font-weight: 500;
+}
+.dvm-offer-info .top-block {
+    display: flex;
+    flex-direction: row;
+}
+.top-block .top-price-block {
+	width: 30%;
+    display: flex;
+    align-items: center;
+}
+.top-block .top-buy-block{
+	width: 70%;
+    display: flex;
+	justify-content: flex-start;
+    align-items: center;
+}
+.top-block .top-buy-block .buy {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: #116a7a;
+    color: #fff;
+    width: 55px;
+    height: 25px;
+    line-height: 25px;
+    font-weight: 500;
+    margin: 5px 5px;
+    border-radius: 20px;
+    box-shadow: 0 0px 5px rgba(0,0,0,0.2);
+}
+.dvm-offer-info .location {
+    margin-top: 5px;
+}
+.dvm-offer-info .location i {
+    margin-right: 5px;
+}
+.dvm-offer-info .dvm-info-block {
+    display: flex;
+    margin-top: 5px;
+}
+.dvm-offer-info .category {
+    background: #30a8bc;
+    font-weight: 500;
+    color: #fff;
+    width: fit-content;
+    padding: 5px 15px 5px 15px;
+    border-radius: 25px;
+}
+.dvm-offer-info .status {
+    background: #30a8bc;
+    color: #fff;
+    width: fit-content;
+    margin-left: 10px;
+    padding: 5px 15px 5px 15px;
+    border-radius: 25px;
+}
+.dvm-offer-info .status span {
+    font-weight: 500;
+}
+.dvm-offer-info .description {
+    font-size: 14px;
+    margin-top: 5px;
+}
+.dvm-offer-info .id {
+    margin-top: 5px;
+}
+.dvm-offer-info span {
+    font-weight: 500;
+}
+.id {
+    background: #30a8bc;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 26px;
+    width: fit-content;
+}
+.dvm-offer-seller {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100px;
+    background: #fff;
+    color: #125560;
+    margin-top: 10px;
+    padding: 20px;
+    border-radius: 25px;   
+}
+.dvm-offer-seller img{
+    display: flex;
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    box-shadow: 0 0px 5px rgba(0,0,0,0.2);
+}
+.dvm-offer-seller-name {
+    display: flex;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    width: 130px;
+}
+.dvm-offer-seller-button {
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    background: #30a8bc;
+    color: #fff;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 20px;
+}
+#location, .pac-controls {
+    display: none;
+}
+.dvm-offer-map {
+    height: 250px;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 25px;
+}
+.dvm-offer-message{
+    display: flex;
+    background: rgba(48, 168, 188, 0.90);
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 25px;
+}
+.dvm-offer-cell {
+    display: flex;
+    width: 18%;
+}
+.dvm-offer-cell i {
+    padding: 12px;
+    margin-left: 10px;
+    background: #fff;
+    color: #125560;
+    border-radius: 50px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.dvm-offer-chat {
+    display: flex;
+    width: 82%;
+}
+.dvm-offer-chat input {
+    width: 95%;
+    height: 35px;
+    padding: 5px 35px 5px 10px;
+    border: 1px solid #fff;
+    border-radius: 20px;
+}
+.dvm-offer-chat i {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    position: relative;
+    width: 38px;
+    font-size: 14px;
+    color: #ffffff;
+    background: #116a7a;
+    padding: 11px 11px;
+    margin-left: -35px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+

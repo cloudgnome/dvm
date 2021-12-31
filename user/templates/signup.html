@@ -1,0 +1,14 @@
+{%block main%}
+	<link rel="stylesheet" href="/static/css/signup.css">
+	<div id="body">
+		<main>
+			<div id="form">
+				{%for field in form%}
+					{{field_label}}
+					{{field}}
+					{{field_errors}}
+				{%endfor%}
+			</div>
+		</main>
+	</div>
+{%endblock%}

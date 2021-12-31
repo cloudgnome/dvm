@@ -1,0 +1,174 @@
+{%extends extends%}
+{%block content%}
+    <div id="cabinet" class="edit">
+        <div id="head">
+            {{user.name}}, {{user.age}}
+            <div id="buttons">
+                <button id="save">Принять</button>
+                <button id="cancel">Отмена</button>
+            </div>
+        </div>
+        <div id="edit">
+            <div class="head">Фото</div>
+            <div id="gallery">
+                <div id="images">
+                    {%for id,url in user.gallery.items%}
+                        <div class="image ui-sortable-handle">
+                            <div class="remove" item-id="{{id}}">+</div>
+                            <img src="/media/{{url}}" alt="">
+                        </div>
+                    {%endfor%}
+                </div>
+                {%if user.photos|length < 4 %}
+                    <div id="plus" class="noselect">+</div>
+                {%endif%}
+            </div>
+            <div class="head">Личные данные</div>
+            <form action="javascript:void(0)">
+                <div id="about">
+                    <div id="userData">
+                        <div class="row">
+                            <label for="name">Имя</label>
+                            <input id="name" name="name" type="text" placeholder="Имя" value="{{user.name}}">
+                        </div>
+                        <div id="birthday" class="row">
+                            <label for="birthday">Возраст</label>
+                            <div class="nativeDatePicker">
+                                <input name="birthday" type="date" id="birthdayInput" value="{{user.birthdayValue}}" required="">
+                                <span class="validity"></span>
+                            </div>
+                            <div class="fallbackDatePicker">
+                                <div class="birthdaySelect">
+                                    <select id="day" name="day">
+                                        <option value="" selected>День</option>
+                                    </select>
+                                </div>
+                                <div class="birthdaySelect">
+                                    <select id="month" name="month">
+                                        <option value="" disabled>Месяц</option>
+                                        <option value="01">Янв.</option>
+                                        <option value="02">Фев.</option>
+                                        <option value="03">Март</option>
+                                        <option value="04">Апр.</option>
+                                        <option value="05">Май</option>
+                                        <option value="06">Июнь</option>
+                                        <option value="07">Июль</option>
+                                        <option value="08">Авг.</option>
+                                        <option value="09">Сен.</option>
+                                        <option value="10">Окт.</option>
+                                        <option value="11">Ноя.</option>
+                                        <option value="12">Дек.</option>
+                                    </select>
+                                </div>
+                                <div class="birthdaySelect">
+                                    <select id="year" name="year">
+                                        <option value="" selected>Год</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="gender">Пол</label>
+                            <div class="custom-select">
+                                <select id="gender" name="gender" id="">
+                                    <option value="" selected disabled>Не выбрано</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="appearance">Внешность</label>
+                            <div class="custom-select">
+                                <select id="appearance" name="appearance" id="">
+                                    <option value="" selected disabled>Не выбрано</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="weight">Вес</label>
+                            <input id="weight" type="text" placeholder="Вес" name="weight" value="">
+                        </div>
+                        <div class="row">
+                            <label for="">Рост</label>
+                            <input id="height" type="text" placeholder="Рост" name="height" value="">
+                        </div>
+                        <div class="row">
+                            <label for="relation">Отношения</label>
+                            <div class="custom-select">
+                                <select name="relation" id="relation">
+                                    <option value="" selected disabled>Не выбрано</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="otherData">
+                        <div class="row">
+                            <label for="education">Образование</label>
+                            <div class="custom-select">
+                                <select name="education" id="education">
+                                    <option value="" selected disabled>Не выбрано</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="children">Дети</label>
+                            <div class="custom-select">
+                                <select name="children" id="children">
+                                    <option value="" selected disabled>Не выбрано</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="financial">Доход</label>
+                            <div class="custom-select">
+                                <select name="financial" id="financial">
+                                    <option value="" selected disabled>Не выбрано</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="alcohol">Алкоголь</label>
+                            <div class="custom-select">
+                                <select name="alcohol" id="alcohol">
+                                    <option value="" selected disabled>Не выбрано</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="smoking">Табак</label>
+                            <div class="custom-select">
+                                <select name="smoking" id="smoking">
+                                    <option value="" selected disabled>Не выбрано</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="smoking">Страна</label>
+                            <div id="country" class="autocomplete">
+                                <input id="id_country" type="text" placeholder="Страна" required="" autofocus autocomplete="off" value="{{user.country}}">
+                                <input type="hidden" name="country_id" value="{{user.country_id}}">
+                                <div class="variants"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="smoking">Город</label>
+                            <div id="city" class="autocomplete">
+                                <input type="hidden" name="city_id" value="{{user.city_id}}">
+                                <input id="id_city" type="text" placeholder="Город" required="" autocomplete="off" value="{{user.city}}">
+                                <div class="variants"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script class="eval">
+        window.userData = {{user.extended|safe}};
+        window.userData.profile.age = {{user.age}};
+        window.userBirthday = "{{user.birthday}}";
+    </script>
+<script>
+    if(!document.querySelector('#load'))
+        location.reload();
+</script>
+{%endblock%}

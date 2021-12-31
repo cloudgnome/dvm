@@ -1,0 +1,66 @@
+{%extends 'index.html'%}
+{%load i18n%}
+{%block content%}
+<div id="profile" class="main-block">
+    <div class="head">
+        <div class="dvm-profile-block-photo">
+            {%block avatar%}
+            <div class="dvm-profile-user">
+                <img src="{{user.image_url}}" alt="">
+            </div>
+            {%endblock%}
+        </div>
+        <div class="dvm-profile-block-data">
+            <div id="name">{{user.full_name}}</div>
+            <div id="balance" class="dvm-profile-balance">
+                <div class="balance-name">{% trans 'Account Balance:' %}</div>
+                <div class="balance-conter">
+                    <span>{{user.balance}}</span>
+                    <span class="dvm-hidden">USDT</span>
+                </div>
+            </div>
+            <div class="dvm-profile-other">
+                <a href="/user/help"><i class="fal fa-question-circle"></i>{% trans 'Help' %}</a>
+                <a href="/user/signout"><i class="fal fa-sign-out-alt"></i>{% trans 'Log Out' %}</a>
+            </div>
+        </div>
+    </div>
+    <div id="load" class="dvm-profile-main">
+        {%block main%}
+        <div class="dropdown dvm-profile-archive">
+            <div class="title"><i class="fal fa-globe"></i>{% trans 'Activities' %}<i class="fal fa-chevron-right"></i>
+            </div>
+            <div class="list">
+                <a href="/user/purchases"><i class="fal fa-dot-circle"></i>{% trans 'My Purchases' %}</a>
+                <a href="/user/sales"><i class="fal fa-dot-circle"></i>{% trans 'My Sales' %}</a>
+                <a href="/user/offers"><i class="fal fa-dot-circle"></i>{% trans 'Offers' %}</a>
+                <a href="/user/auctions"><i class="fal fa-dot-circle"></i>{% trans 'Auctions' %}</a>
+                <a href="/user/messages"><i class="fal fa-dot-circle"></i>{% trans 'Messages' %}</a>
+            </div>
+        </div>
+        <div class="dropdown dvm-profile-bussiness">
+            <a class="title" href="/user/business"><i class="fal fa-briefcase"></i>{% trans 'Business Page' %}</a>
+        </div>
+        <div class="dropdown dvm-profile-payment active">
+            <div class="title"><i class="fal fa-wallet"></i>{% trans 'Payments' %}<i class="fal fa-chevron-right"></i>
+            </div>
+            <div class="list">
+                <a href="/user/wallet"><i class="fal fa-dot-circle"></i>{% trans 'My Wallet' %}</a>
+                <a href="/user/payments"><i class="fal fa-dot-circle"></i>{% trans 'Payment History' %}</a>
+            </div>
+        </div>
+        <div class="dropdown dvm-profile-settings active">
+            <div class="title"><i class="fal fa-sliders-v"></i>{% trans 'Profile Settings' %}<i
+                    class="fal fa-chevron-right"></i></div>
+            <div class="list">
+                <a href="/user/settings"><i class="fal fa-dot-circle"></i>{% trans 'Account Settings' %}</a>
+                <a href="/user/view"><i class="fal fa-dot-circle"></i>{% trans 'View Mode' %}</a>
+                <a href="/user/interface"><i class="fal fa-dot-circle"></i>{% trans 'Interface Mode' %}</a>
+                <a href="/user/language"><i class="fal fa-dot-circle"></i>{% trans 'Language' %}</a>
+            </div>
+        </div>
+        {%endblock%}
+    </div>
+</div>
+<script src="/static/js/user/profile.js"></script>
+{%endblock%}

@@ -1,0 +1,201 @@
+{%extends 'auctions.html'%}
+{%load i18n%}
+{%block content%}
+<link rel="stylesheet" href="/static/css/auction.css">
+<link rel="stylesheet" href="/static/css/slider.css">
+<div class="dvm-auctions-top-bar">
+	<div class="dvm-block1">
+		<i class="fas fa-search"></i>
+		<input type="text" placeholder="{% trans 'Search'%}">
+	</div>
+	<div class="dvm-block2">
+		<a href="/favorite"><i class="fal fa-star"></i></a>
+		<a><i class="fal fa-filter"></i></a>
+		<a id="toggleMenu"><i class="fal fa-bars"></i></a>
+		<input type="hidden" name="category" id="id_category">
+	</div>
+</div>
+<div id="auction" class="main-block">
+    <div id="slider">
+        <div data-glide-el="controls" class="dvm-image-arrows">
+            <div class="prev arrow" data-glide-dir="<"></div>
+            <div class="next arrow" data-glide-dir=">"></div>
+        </div>
+        <div id="carouselSlider" class="glide">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    {%for image in auction.gallery.all%}
+                        <li class="glide__slide">
+                            <img src="{{image}}" alt="" onerror="this.src='/media/no_image.png';">
+                        </li>
+                    {%endfor%}
+                </ul>
+            </div>
+            <div class="glide__bullets" data-glide-el="controls[nav]"></div>
+        </div>
+    </div>
+    <div class="dvm-auction-info">
+		<div class="name">{{auction.name}}</div>
+		<div class="top-block">
+			<div class="top-price-block">
+				<div class="price-max-bid">{{auction.max_bid}}
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="13" height="13" viewBox="0 0 2000 2000" style="enable-background:new 0 0 2000 2000;" xml:space="preserve">
+					<style type="text/css">.st0{fill:#105662;}.st1{fill:#FFFFFF;}</style>
+					<path class="st0" d="M1000,0c552.3,0,1000,447.7,1000,1000s-447.8,1000-1000,1000S0,1552.4,0,1000S447.7,0,1000,0"/>
+					<path class="st1" d="M1123.4,866.8V718h340.2V491.3H537.3V718h340.2v148.6C601,879.3,393.1,934.1,393.1,999.7s208,120.4,484.4,133.1
+						v476.5h246v-476.5c276-12.7,483.5-67.5,483.5-133S1399.5,879.5,1123.4,866.8 M1123.5,1092.4L1123.5,1092.4
+						c-6.9,0.3-42.6,2.5-122,2.5c-63.5,0-108.1-1.8-123.9-2.6v0.2C633.3,1081.7,451,1039.1,451,988.2S633.4,894.8,877.6,884v166.1
+						c16,1.1,61.8,3.8,124.9,3.8c75.9,0,114-3.2,121-3.8V884c243.8,10.9,425.7,53.4,425.7,104.2
+						C1549.3,1038.9,1367.3,1081.5,1123.5,1092.4"/>
+					</svg>
+				</div>
+				<div class="bids-tep">Step: <span>{{auction.bid_step}} 
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="9" height="9" viewBox="0 0 2000 2000" style="enable-background:new 0 0 2000 2000;" xml:space="preserve">
+					<style type="text/css">.st0{fill:#105662;}.st1{fill:#FFFFFF;}</style>
+					<path class="st0" d="M1000,0c552.3,0,1000,447.7,1000,1000s-447.8,1000-1000,1000S0,1552.4,0,1000S447.7,0,1000,0"/>
+					<path class="st1" d="M1123.4,866.8V718h340.2V491.3H537.3V718h340.2v148.6C601,879.3,393.1,934.1,393.1,999.7s208,120.4,484.4,133.1
+						v476.5h246v-476.5c276-12.7,483.5-67.5,483.5-133S1399.5,879.5,1123.4,866.8 M1123.5,1092.4L1123.5,1092.4
+						c-6.9,0.3-42.6,2.5-122,2.5c-63.5,0-108.1-1.8-123.9-2.6v0.2C633.3,1081.7,451,1039.1,451,988.2S633.4,894.8,877.6,884v166.1
+						c16,1.1,61.8,3.8,124.9,3.8c75.9,0,114-3.2,121-3.8V884c243.8,10.9,425.7,53.4,425.7,104.2
+						C1549.3,1038.9,1367.3,1081.5,1123.5,1092.4"/>
+					</svg>
+				</span></div>  
+			</div>
+            {%if auction.user != user%}
+    			<div class="top-bid-block">
+    				<input placeholder="You Bid..."><i class="fas fa-long-arrow-right"></i>
+    			</div>
+            {%endif%}
+		</div>
+		<div class="location"><i class="fas fa-map-marker-alt"></i>{{auction.location_text}}</div>		
+        <div class="dvm-info-block">
+            <a href="/category/Auction/{{auction.category.id}}" class="category">{{auction.category.name}}</a>
+            <div class="status"><span>Status: </span>{{auction.get_status_display}}</div>
+        </div>
+		<div class="dvm-info-block2">
+			<div class="price-details-block">
+				<div class="start-price">Start price: <span>{{auction.start_price}} 
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="9" height="9" viewBox="0 0 2000 2000" style="enable-background:new 0 0 2000 2000;" xml:space="preserve">
+					<style type="text/css">.st0{fill:#105662;}.st1{fill:#FFFFFF;}</style>
+					<path class="st0" d="M1000,0c552.3,0,1000,447.7,1000,1000s-447.8,1000-1000,1000S0,1552.4,0,1000S447.7,0,1000,0"/>
+					<path class="st1" d="M1123.4,866.8V718h340.2V491.3H537.3V718h340.2v148.6C601,879.3,393.1,934.1,393.1,999.7s208,120.4,484.4,133.1
+						v476.5h246v-476.5c276-12.7,483.5-67.5,483.5-133S1399.5,879.5,1123.4,866.8 M1123.5,1092.4L1123.5,1092.4
+						c-6.9,0.3-42.6,2.5-122,2.5c-63.5,0-108.1-1.8-123.9-2.6v0.2C633.3,1081.7,451,1039.1,451,988.2S633.4,894.8,877.6,884v166.1
+						c16,1.1,61.8,3.8,124.9,3.8c75.9,0,114-3.2,121-3.8V884c243.8,10.9,425.7,53.4,425.7,104.2
+						C1549.3,1038.9,1367.3,1081.5,1123.5,1092.4"/>
+					</svg>
+				</span></div>
+				<div class="max-bid">Current price: <span>{{auction.max_bid}} 
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="9" height="9" viewBox="0 0 2000 2000" style="enable-background:new 0 0 2000 2000;" xml:space="preserve">
+					<style type="text/css">.st0{fill:#105662;}.st1{fill:#FFFFFF;}</style>
+					<path class="st0" d="M1000,0c552.3,0,1000,447.7,1000,1000s-447.8,1000-1000,1000S0,1552.4,0,1000S447.7,0,1000,0"/>
+					<path class="st1" d="M1123.4,866.8V718h340.2V491.3H537.3V718h340.2v148.6C601,879.3,393.1,934.1,393.1,999.7s208,120.4,484.4,133.1
+						v476.5h246v-476.5c276-12.7,483.5-67.5,483.5-133S1399.5,879.5,1123.4,866.8 M1123.5,1092.4L1123.5,1092.4
+						c-6.9,0.3-42.6,2.5-122,2.5c-63.5,0-108.1-1.8-123.9-2.6v0.2C633.3,1081.7,451,1039.1,451,988.2S633.4,894.8,877.6,884v166.1
+						c16,1.1,61.8,3.8,124.9,3.8c75.9,0,114-3.2,121-3.8V884c243.8,10.9,425.7,53.4,425.7,104.2
+						C1549.3,1038.9,1367.3,1081.5,1123.5,1092.4"/>
+					</svg>
+				</span></div> 
+			</div>
+			<div class="price-details-block">
+				<div class="expiration-date">Expiration Date: <span>{{auction.end_date}}</span></div>	
+				<div class="buyout">Bayout price: <span>{{auction.buyout}} 
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="9" height="9" viewBox="0 0 2000 2000" style="enable-background:new 0 0 2000 2000;" xml:space="preserve">
+					<style type="text/css">.st0{fill:#105662;}.st1{fill:#FFFFFF;}</style>
+					<path class="st0" d="M1000,0c552.3,0,1000,447.7,1000,1000s-447.8,1000-1000,1000S0,1552.4,0,1000S447.7,0,1000,0"/>
+					<path class="st1" d="M1123.4,866.8V718h340.2V491.3H537.3V718h340.2v148.6C601,879.3,393.1,934.1,393.1,999.7s208,120.4,484.4,133.1
+						v476.5h246v-476.5c276-12.7,483.5-67.5,483.5-133S1399.5,879.5,1123.4,866.8 M1123.5,1092.4L1123.5,1092.4
+						c-6.9,0.3-42.6,2.5-122,2.5c-63.5,0-108.1-1.8-123.9-2.6v0.2C633.3,1081.7,451,1039.1,451,988.2S633.4,894.8,877.6,884v166.1
+						c16,1.1,61.8,3.8,124.9,3.8c75.9,0,114-3.2,121-3.8V884c243.8,10.9,425.7,53.4,425.7,104.2
+						C1549.3,1038.9,1367.3,1081.5,1123.5,1092.4"/>
+					</svg>
+				</span></div>				
+			</div>
+		</div>
+        <div class="description">{{auction.description}}</div>
+        <div class="id"><span>ID:</span> {{auction.id}}</div>
+    </div>
+    <div id="seller" class="dvm-auction-seller">
+        <img src="/media/{{auction.user.image}}" alt="" onerror="this.src='/static/image/user_no_image.jpg'">
+        <div class="dvm-auction-seller-name">{{auction.user.full_name}}</div>
+        <div class="dvm-auction-seller-button">{% trans 'Auctions'%}</div>
+    </div>
+    <div class="pac-card" id="pac-card">
+        <div>
+            <div id="type-selector" class="pac-controls">
+                <input type="radio" name="type" id="changetype-all" checked="checked">
+                <label for="changetype-all">All</label>
+
+                <input type="radio" name="type" id="changetype-establishment">
+                <label for="changetype-establishment">Establishments</label>
+
+                <input type="radio" name="type" id="changetype-address">
+                <label for="changetype-address">Addresses</label>
+
+                <input type="radio" name="type" id="changetype-geocode">
+                <label for="changetype-geocode">Geocodes</label>
+            </div>
+            <div id="strict-bounds-selector" class="pac-controls">
+                <input type="checkbox" id="use-strict-bounds" value="">
+                <label for="use-strict-bounds">Strict Bounds</label>
+            </div>
+        </div>
+    </div>
+    <div id="location">{{auction.location_text}}</div>
+    <input id="id_location_text" type="hidden">
+    <div id="map" class="dvm-auction-map"></div>
+    <div id="infowindow-content">
+        <img src="" width="16" height="16" id="place-icon">
+        <span id="place-name" class="title"></span><br>
+        <span id="place-address"></span>
+    </div>
+    {%if auction.user != user%}
+        <div id="contact" class="dvm-auction-message">
+            <div id="cell" class="dvm-auction-cell"><i class="fas fa-phone-alt"></i></div>
+            <div id="chat" class="dvm-auction-chat">
+                <input type="text" placeholder="{% trans 'Write a message'%}...">
+                <i recieverId="{{auction.user.id}}" id="sendMessage" class="fas fa-long-arrow-right"></i>
+            </div>
+        </div>
+    {%endif%}
+</div>
+{%if auction.user == user%}
+    <div id="panel-edit">
+    	<div class="dvm-menu-item">
+    		<a href="/top/auction/{{auction.id}}">
+    			<div class="icon"><i class="fal fa-arrow-to-top"></i></div>
+    			<div class="dvm-menu-name">{% trans 'To The Top' %}</div>
+    		</a>
+    	</div>
+    	<div class="dvm-menu-item">
+    		<a href="/advertise/auction/{{auction.id}}">
+    			<div class="icon"><i class="fal fa-ad"></i></div>
+    			<div class="dvm-menu-name">{% trans 'Advertise' %}</div>
+    		</a>
+    	</div>
+    	<div class="dvm-menu-item">
+    		<a href="/edit/Auction/{{auction.id}}">
+    			<div class="icon"><i class="fal fa-pencil"></i></div>
+    			<div class="dvm-menu-name">{% trans 'Edit' %}</div>
+    		</a>
+    	</div>
+    	<div class="dvm-menu-item">
+    		<a href="/delivery/auction/{{auction.id}}">
+    			<div class="icon"><i class="fal fa-truck"></i></div>
+    			<div class="dvm-menu-name">{% trans 'Delivery' %}</div>
+    		</a>
+    	</div>
+    	<div class="dvm-menu-item">
+    		<a href="/remove/auction/{{auction.id}}">
+    			<div class="icon"><i class="fal fa-times"></i></div>
+    			<div class="dvm-menu-name">{% trans 'Remove' %}</div>
+    		</a>
+    	</div>
+    </div>
+{%endif%}
+<script>
+    var lat = {{ auction.location_lat }};
+    var lng = {{ auction.location_lng }};
+</script>
+<script src="/static/js/auction.js"></script>
+{%endblock%}

@@ -1,0 +1,60 @@
+{%extends 'index.html'%}
+{%block body%}
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	<link rel="stylesheet" href="/static/css/font-awesome-5.0/css/all.min.css">
+	<!--<link href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css" rel="stylesheet"> -->
+	<div class="overlay"></div>
+	<div id="body">
+		<main class="main-block">
+			<div class="dvm-logo">
+				<a href="/user/profile"><img src="/static/image/logo.svg"></a>
+			</div>
+			<div class="dvm-text dvm-text-center dvm-text-login">
+				<h1>Join Us Now</h1>
+				<p>DVMarketplace - the future of trading</p>
+			</div>
+			<form id="form" action="/user/signin" method="post" class="dvm-form dvm-login-form">
+				{%csrf_token%}
+				<div class="inputs">
+					<div class="dvm-login">
+					<input type="text" name="login" placeholder="name@dvm-market.com" title="Login" required="" id="id_login">
+					<div class="errors"></div>
+					<span class="dvm-focus-input dvm-icon-login" data-symbol=""></span>
+				</div>
+				<div class="dvm-password">
+					<input type="password" name="password" placeholder="password" autocomplete="password" required="" id="id_password">
+					<div class="errors"></div>
+					<span class="dvm-focus-input dvm-icon-password" data-symbol=""></span>
+				</div>
+				</div>
+				<!-- <div class="g-recaptcha" data-sitekey="6LdF3rcUAAAAAEk2nDETSp_TduLMAH5W8qqb3068"></div> -->
+				<button id="submit" class="dvm-button" {%if form.errors%}class="inactive"{%endif%}>Sign in</button>
+				<div class="dvm-login-add">
+				<a id="forgetPass" href="/user/recover" class="dvm-link dvm-recover-password">Forgot Password?</a>
+				<a href="/user/signup" id="signup" class="dvm-link dvm-sign-up">Sign up</a>
+				</div>
+			</form>
+			<div class="dvm-line">
+				<span class="line-1"></span>Or<span class="line-2"></span>
+			</div>
+			<div class="dvm-other-sign"> 
+				<button type="submit" class="dvm-button dvm-button-sign-in dvm-button-facebook"><i class="fab fa-facebook-f"></i> Sign in with <span>Facebook</span></button>
+				
+				<button type="submit" class="dvm-button dvm-button-sign-in dvm-button-google">
+					<i class="fab fa-google"></i> Sign in with <span>Google</span>
+				</button>
+			</div>
+		</main>
+	</div>
+	<!-- <script src="https://www.google.com/recaptcha/api.js?render=6LfK3bcUAAAAACHKDNo0Xibl4Y8vsZBw8inGg4s6"></script>
+	<script>
+		grecaptcha.ready(function() {
+		grecaptcha.execute('6LfK3bcUAAAAACHKDNo0Xibl4Y8vsZBw8inGg4s6', {action: 'login'}).then(function(token) {
+			
+		});
+	});
+	</script> -->
+{%endblock%}
+{%block JS%}
+	<script src="/static/js/signin.js"></script>
+{%endblock%}

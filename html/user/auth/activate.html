@@ -1,0 +1,31 @@
+{%extends 'index.html'%}
+{%block body%}
+	<link rel="stylesheet" href="/static/css/font-awesome-5.0/css/all.min.css">
+	<!--<link href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css" rel="stylesheet"> -->
+	<div class="overlay"></div>
+	<div id="body">
+		<main class="main-block">
+			<div class="dvm-logo">
+				<a href="/"><img src="/static/image/logo.svg"></a>
+			</div>
+			<div class="dvm-text dvm-text-center dvm-text-login">
+				<h1>Registration</h1>
+				{%if activated%}
+					<p>Your account has been successfully verified! You can start using the service.</p>
+					<p>
+						<a href="/user/profile">
+							<button class="dvm-button">Go to profile</button>
+						</a>
+					</p>
+				{%else%}
+					<p>Thank you for registering! To activate your account, check your mail and click on the links in the letter.</p>
+					<p>
+						<a href="/user/activate?resend=true">
+							<button class="dvm-button">Didn't get the code?</button>
+						</a>
+					</p>
+				{%endif%}
+			</div>
+		</main>
+	</div>
+{%endblock%}

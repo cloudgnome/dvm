@@ -1,0 +1,28 @@
+{%extends 'index.html'%}
+{%block content%}
+	<link rel="stylesheet" href="/static/css/messages.css">
+    <div id="chat" class="main-block dvm-message-mode">
+		<div class="dvm-message-search-bar">
+			<div class="dvm-block1">
+				<i class="fas fa-search"></i>
+				<input type="text" placeholder="Search">
+			</div>
+			<div class="dvm-block2">
+				<a href="#"><i class="fas fa-long-arrow-right"></i></a>
+			</div>
+		</div>
+		<div class="dvm-message-filter">
+			<button>All</button> 
+			<button>Inbox</button> 
+			<button>Sent</button> 
+			<button>Archive</button> 
+        </div>
+        {%for chat in chats%}
+            <div class="head">
+                <div class="name">{{chat.name}}</div>
+                <div class="time">{{chat.time}}</div>
+                <div class="message">{{chat.last.message}}</div>
+            </div>
+        {%endfor%}
+    </div>
+{%endblock%}

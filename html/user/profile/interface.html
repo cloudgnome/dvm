@@ -1,0 +1,21 @@
+{%extends 'user/profile/main.html'%}
+{%load i18n%}
+{%block main%}
+<div id="breadcrumbs" class="dvm-breadcumbs">
+    <div>
+        <a href="/user/profile">{% trans 'Profile Settings'%}</a>
+        <i class="fal fa-angle-double-right"></i>
+        <a href="/user/interface">{% trans 'Interface'%}</a>
+    </div>
+</div>
+<div class="dvm-interface-mode">
+    <div class="title">
+        {% trans 'Set dark theme or light theme, as default:'%}
+    </div>
+    <div class="interface-list">
+        <div class="dvm-icon-block active"><i class="fal fa-moon"></i><span>{% trans 'Dark Theme' %}</span></div>
+        <div class="dvm-icon-block"><i class="fal fa-sun"></i><span>{% trans 'Light Theme' %}</span></div>
+    </div>
+</div>
+
+{%endblock%}

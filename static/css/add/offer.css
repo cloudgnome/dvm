@@ -1,0 +1,16 @@
+#map {
+	height: 300px;
+	width: 100%;
+}
+
+#infowindow-content .title {
+	font-weight: bold;
+}
+
+#infowindow-content {
+	display: none;
+}
+
+#map #infowindow-content {
+	display: inline;
+}

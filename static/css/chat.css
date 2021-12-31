@@ -1,0 +1,155 @@
+.dvm-chat-mode {
+    position: relative;
+    z-index: 50;
+}
+.dvm-chat-top {
+    display: flex;
+    background: rgba(48, 168, 188, 0.90);
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 25px;
+}
+.dvm-chat-back {
+    display: flex;
+    width: 18%;
+    height: 35px;
+}
+.dvm-chat-back i {
+    padding: 12px;
+    margin-left: 10px;
+    background: #fff;
+    color: #125560;
+    border-radius: 50px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.dvm-chat-profile {
+    display: flex;
+    height: 35px;
+    border-radius: 25px;
+}
+.dvm-chat-profile img {
+    display: flex;
+    width: 35px;
+    height: 35px;
+    margin-left: 5px;
+    border-radius: 50px;
+    box-shadow: 0 0px 5px rgba(0,0,0,0.2);
+}
+.dvm-chat-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+}
+.dvm-chat-label .dvm-chat-phone {
+    font-weight: 700;
+}
+.dvm-chat-label .dvm-chat-label {
+    font-size: 11px;
+}
+.dvm-chat-box {
+    display: flex;
+    flex-basis: auto;
+    flex-direction: column;
+    height: 510px;
+    overflow-y: auto;
+    background: #fff;
+    color: #125560;
+    margin-top: 10px;
+    padding: 0px 0px;
+    border-radius: 15px;
+}
+.dvm-chat-header {
+    width: 100%;
+    background: #f0ecec;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    border-radius: 0px;
+}
+.dvm-chat-header p {
+    padding: 8px 20px 6px 20px;
+    margin-bottom: 0;
+}
+.dvm-chat-header h2 {
+    padding: 0px 15px 10px 20px;
+    font-size: 14px;
+}
+.message {
+    width: 75%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+}
+.message.from .text {
+    padding: 15px;
+}
+.message.to .text {
+    padding: 15px;
+}
+.message:last-child {
+    margin-bottom: 30px;;
+}
+.message.from {
+    align-self: flex-start;
+    background: #3fabbd;
+    color: #fff;
+    margin-left: 20px;
+}
+.message.to {
+    align-self: flex-end;
+    background: #f2efef;
+    color: #116a7a;
+    margin-right: 20px;
+}
+.dvm-offer-message {
+    display: flex;
+    background: rgba(48, 168, 188, 0.90);
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 25px;
+}
+.dvm-offer-cell {
+    display: flex;
+    width: 18%;
+}
+.dvm-offer-cell i {
+    padding: 12px;
+    margin-left: 10px;
+    background: #fff;
+    color: #125560;
+    border-radius: 50px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.dvm-offer-chat {
+    display: flex;
+    width: 82%;
+}
+.dvm-offer-chat input {
+    width: 95%;
+    height: 35px;
+    padding: 5px 35px 5px 10px;
+    border: 1px solid #fff;
+    border-radius: 20px;
+}
+.dvm-offer-chat button {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    position: relative;
+    width: 38px;
+    font-size: 14px;
+    color: #ffffff;
+    background: #116a7a;
+    padding: 11px 11px;
+    margin-left: -35px;
+    border-radius: 50px;
+    border: 0;
+    cursor: pointer;
+}
+.dvm-offer-chat button i {
+    color: #ffffff;
+}

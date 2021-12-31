@@ -1,0 +1,95 @@
+{%extends 'index.html'%}
+{%load i18n%}
+{%block content%}
+<link rel="stylesheet" href="/static/css/user/business.css">
+<link rel="stylesheet" href="/static/css/offers.css">
+<link rel="stylesheet" href="/static/css/add/offer-add.css">
+<div id="breadcrumbs" class="dvm-add-offer-breadcumbs">
+    <div>
+        <a href="/">Offers</a>
+        <i class="fal fa-angle-double-right"></i>
+        <a href="/catalog/add/offer">Edit Offer</a>
+    </div>
+</div>  
+<div class="dvm-offer-add">
+    <div class="dvm-offer-title">
+        <div class="title">Edit Offer</div>
+    </div>
+    <div id="gallery">
+        <div id="images">
+            <div class="dvm-column-image">
+                <div class="plus noselect dvm-no-img img-1"></div>
+                <div class="plus noselect dvm-no-img img-2"></div>
+                <div class="plus noselect dvm-no-img img-3"></div>
+                <div class="plus noselect dvm-no-img img-4"></div>
+            </div>
+            <div class="dvm-column-image">
+                <div class="plus noselect dvm-no-img img-5"></div>
+                <div class="plus noselect dvm-no-img img-6"></div>
+                <div class="plus noselect dvm-no-img img-7"></div>
+                <div class="plus noselect dvm-no-img img-8"></div>
+            </div>
+        </div>
+    </div>
+    <form id="form" action="javascript:void(0)" method="post">
+        {%csrf_token%}
+        <div class="inputs">
+            <div id="toggleCategories">
+                <div class="dvm-add-offer-category">{{obj.category.name}}</i></div>
+            </div>
+            <input type="hidden" name="category" id="id_category" value="{{obj.category.id}}">
+            {%for field in form%}
+                {{field}}
+                <div class="errors">{{field.errors}}</div>
+            {%endfor%}
+            <div class="errors"></div>
+        </div>
+        <div class="pac-card" id="pac-card">
+            <div>
+                <div id="type-selector" class="pac-controls">
+                    <input type="radio" name="type" id="changetype-all" checked="checked">
+                    <label for="changetype-all">All</label>
+
+                    <input type="radio" name="type" id="changetype-establishment">
+                    <label for="changetype-establishment">Establishments</label>
+
+                    <input type="radio" name="type" id="changetype-address">
+                    <label for="changetype-address">Addresses</label>
+
+                    <input type="radio" name="type" id="changetype-geocode">
+                    <label for="changetype-geocode">Geocodes</label>
+                </div>
+                <div id="strict-bounds-selector" class="pac-controls">
+                    <input type="checkbox" id="use-strict-bounds" value="">
+                    <label for="use-strict-bounds">Strict Bounds</label>
+                </div>
+            </div>
+        </div>
+        <div id="map" class="dvm-offer-map"></div>
+        <div id="infowindow-content">
+            <img src="" width="16" height="16" id="place-icon">
+            <span id="place-name" class="title"></span><br>
+            <span id="place-address"></span>
+        </div>
+        <div class="dvm-save-block">
+            <button id="preview" class="dvm-button">{% trans 'Preview'%}</button>
+            <button id="submit" class="dvm-button">{% trans 'Save'%}</button>
+        </div>
+    </form>
+</div>
+{%endblock%}
+{%block panel%}
+{%endblock%}
+{%block JS%}
+    <script>
+        var lat = {{ obj.location_lat }};
+        var lng = {{ obj.location_lng }};
+    </script>
+    <script src="/static/js/add/offer.js"></script>
+    <script src="/static/js/edit/offer.js"></script>
+    <script>
+        var validator = new Validator($('#form'),rules);
+        var gallery = new GalleryEdit(model='Offer',images={{obj.gallery_list|safe}});
+        var view = new EditOffer(id={{obj.id}});
+    </script>
+{%endblock%}

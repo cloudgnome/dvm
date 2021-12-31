@@ -1,0 +1,103 @@
+{%extends 'index.html'%}
+{%load i18n%}
+{%block content%}
+<link rel="stylesheet" href="/static/css/offers.css">
+<div class="dvm-offers-top-bar">
+	<div class="dvm-block1">
+		<i class="fas fa-search"></i>
+		<input type="text" placeholder="{% trans 'Search'%}">
+	</div>
+	<div class="dvm-block2">
+		<a href="/favorite"><i class="fal fa-star"></i></a>
+		<a><i class="fal fa-filter"></i></a>
+		<a id="toggleMenu"><i class="fal fa-bars"></i></a>
+		<input type="hidden" name="category" id="id_category">
+	</div>
+</div>
+<main class="main-block">
+    <div id="offers" class="dvm-offers-mode dvm-offers-full-mode">
+        {%for offer in offers%}
+            <div class="offer">
+                <div class="dvm-offer-image-block">
+                    <div class="dvm-offer-icon"><i class="fal fa-star"></i></div>
+					<a href="/offer/{{offer.id}}"><img src="{{offer.gallery.first}}" alt=""></a>
+                    <div class="dvm-offer-price">
+                        <p>{{offer.price}} 
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="10" height="10" viewBox="0 0 2000 2000" style="enable-background:new 0 0 2000 2000;" xml:space="preserve">
+							<style type="text/css">.st0{fill:#105662;}.st1{fill:#FFFFFF;}</style>
+							<path class="st0" d="M1000,0c552.3,0,1000,447.7,1000,1000s-447.8,1000-1000,1000S0,1552.4,0,1000S447.7,0,1000,0"/>
+							<path class="st1" d="M1123.4,866.8V718h340.2V491.3H537.3V718h340.2v148.6C601,879.3,393.1,934.1,393.1,999.7s208,120.4,484.4,133.1
+							v476.5h246v-476.5c276-12.7,483.5-67.5,483.5-133S1399.5,879.5,1123.4,866.8 M1123.5,1092.4L1123.5,1092.4
+							c-6.9,0.3-42.6,2.5-122,2.5c-63.5,0-108.1-1.8-123.9-2.6v0.2C633.3,1081.7,451,1039.1,451,988.2S633.4,894.8,877.6,884v166.1
+							c16,1.1,61.8,3.8,124.9,3.8c75.9,0,114-3.2,121-3.8V884c243.8,10.9,425.7,53.4,425.7,104.2
+							C1549.3,1038.9,1367.3,1081.5,1123.5,1092.4"/>
+							</svg>
+						</p>
+                    </div>
+                </div>
+                <div class="dvm-offer-info">
+					<a href="/category/Offer/{{offer.category.id}}" class="dvm-offer-category">{{offer.category.name}}</a>
+                    <a href="/offer/{{offer.id}}" class="dvm-offer-name">
+                        <p class="dvm-offer-name">{{offer.name}}</p>
+                    </a>
+                    <p class="dvm-offer-location">
+                        <i class="fas fa-map-marker-alt"></i>{{offer.location_text}}
+                    </p>
+                </div>
+            </div>
+        {%endfor%}
+    </div>
+    <div class="dvm-offer-filter">
+        <div class="dvm-filter-title">Search filters</div>
+        <div class="dvm-fields-bar">
+            <div class="dvm-geolocation">
+                <input type="text" name="name" placeholder="Geolocaion" required="" id="">
+                <div class="errors"></div>
+                <span class="dvm-filter-icon icon-geo"></span>
+            </div>
+            <div class="dvm-category">
+                <button class="dvm-button"><i class="fal fa-bars"></i></button>
+            </div>
+            <div class="dvm-price-offer-price">
+                <div class="dvm-price-field">
+                    <input type="text" name="name" placeholder="From" required="" id="">
+                    <div class="errors"></div>
+                    <span class="dvm-filter-icon icon-dollar"></span>
+                </div>
+                <div class="dvm-price-field">
+                    <input type="text" name="name" placeholder="To" required="" id="">
+                    <div class="errors"></div>
+                    <span class="dvm-filter-icon icon-dollar"></span>
+                </div>
+            </div>
+            <div class="dvm-ordering-offer">
+                <div class="dvm-ordering-field">
+                    <select name="name" id="">
+                        <option value="1" selected="">Ordering</option>
+                        <option value="2">Top</option>
+                        <option value="3">Low price</option>
+                        <option value="4">High price</option>
+                        <option value="5">Newest</option>
+                    </select>
+                    <div class="errors"></div>
+                    <span class="dvm-filter-icon icon-ordering"></span>
+                </div>
+            </div>
+            <div class="dvm-offers-view">
+                <button class="dvm-button dvm-button-sign-in"><i class="fal fa-square"></i></button>
+                <button class="dvm-button dvm-button-sign-in"><i class="fal fa-th-large"></i></button>
+                <button class="dvm-button dvm-button-sign-in"><i class="fal fa-list-ul"></i></button>
+            </div>
+        </div>
+        <div class="dvm-offers-save">
+            <button type="submit" class="dvm-button dvm-button-sign-in">
+                <i class="fal fa-search"></i>
+                Search
+            </button>
+        </div>
+    </div>
+</main>
+{%endblock%}
+{%block JS%}
+    <script src="/static/js/offers.js"></script>
+{%endblock%}

@@ -1,0 +1,36 @@
+{%extends 'index.html'%}
+{%block content%}
+	<link rel="stylesheet" href="/static/css/chat.css">
+    <div id="chat" class="main-block dvm-chat-mode">
+		<div class="dvm-chat-top">
+            <div class="dvm-chat-back"><i class="fas fa-long-arrow-left"></i></div>
+            <div class="dvm-chat-profile">
+			<img src="/media/users/image/234/R7HNNFPBtHUB8RyM.png100x100.jpg">
+			<div class="dvm-chat-label">
+			<p class="dvm-chat-phone">+38(050)14-88-134</p>
+			<p class="dvm-chat-time">Last activity - 15.10.19 - 22:10</p>
+			</div>
+			</div>
+        </div>
+        <div id="text" class="dvm-chat-box">
+            <div class="dvm-chat-header">
+				<p>ID: 1654831</p>
+				<h2>Canon EOS 77D EF-S 18-135mm</h2>
+			</div>
+        </div>
+        <div id="send" class="dvm-offer-message">
+			<div class="dvm-offer-cell"><i class="far fa-paperclip"></i></div>
+			<div class="dvm-offer-chat"><input type="text" placeholder="Write a message..."> <button><i class="fas fa-long-arrow-right"></i></button></div>
+        </div>
+    </div>
+{%endblock%}
+{%block panel%}
+{%endblock%}
+{%block JS%}
+    <script>
+        var messages = {{chat.list|safe}};
+        var userId = {{user.id}};
+    </script>
+    <script src="/static/js/templates.js"></script>
+    <script src="/static/js/chat/messages.js"></script>
+{%endblock%}
